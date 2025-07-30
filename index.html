@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabinet Médical Dr. Bouchaib HAMYA - Médecine Générale & Échographie | Inzegane</title>
+    <meta name="description" content="Cabinet médical du Dr. Bouchaib HAMYA, médecin généraliste avec 38 ans d'expérience, spécialisé en échographie. Médecin assermenté expert près les tribunaux. Anciennement à Guelmim, maintenant installé à Inzegane.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/bloc.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .services-bg {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('assets/images/medecin.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .appointment-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .appointment-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-stethoscope text-blue-600 text-3xl mr-3"></i>
+                <h1 class="text-xl md:text-2xl font-bold text-blue-800">Dr. Bouchaib HAMYA</h1>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-blue-800">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-blue-800 font-medium hover:text-blue-600 transition">Accueil</a>
+                <a href="#services" class="text-blue-800 font-medium hover:text-blue-600 transition">Services</a>
+                <a href="#apropos" class="text-blue-800 font-medium hover:text-blue-600 transition">À Propos</a>
+                <a href="#contact" class="text-blue-800 font-medium hover:text-blue-600 transition">Contact</a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
+            <a href="#accueil" class="block py-2 text-blue-800 font-medium">Accueil</a>
+            <a href="#services" class="block py-2 text-blue-800 font-medium">Services</a>
+            <a href="#apropos" class="block py-2 text-blue-800 font-medium">À Propos</a>
+            <a href="#contact" class="block py-2 text-blue-800 font-medium">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero pt-24 pb-16 md:pt-32 md:pb-24 text-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Dr. Bouchaib HAMYA</h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">Médecine Générale & Échographie</h2>
+                <p class="text-lg mb-8">38 ans d'expérience au service de votre santé. Anciennement à Guelmim, maintenant installé à Inzegane.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="tel:+212528872513" class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-6 rounded-lg text-center transition">
+                        <i class="fas fa-phone mr-2"></i> Appeler maintenant 05 28 87 25 13
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden border-4 border-white shadow-xl floating">
+                    <img src="assets/images/doctor.png" alt="Dr. Bouchaib HAMYA" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Banner -->
+    <div class="bg-blue-800 text-white py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-12">
+                <div class="flex items-center">
+                    <i class="fas fa-award text-3xl mr-3 text-yellow-400"></i>
+                    <div>
+                        <p class="font-bold text-lg">38+ ans</p>
+                        <p class="text-sm">d'expérience médicale</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-gavel text-3xl mr-3 text-yellow-400"></i>
+                    <div>
+                        <p class="font-bold text-lg">Médecin expert</p>
+                        <p class="text-sm">assermenté près les tribunaux</p>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-map-marker-alt text-3xl mr-3 text-yellow-400"></i>
+                    <div>
+                        <p class="font-bold text-lg">Nouveau cabinet</p>
+                        <p class="text-sm">à Inzegane</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 services-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Nos Services Médicaux</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets//images/coeur.png" alt="Médecine Générale" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-user-md text-blue-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-blue-800">Médecine Générale</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Consultations médicales complètes pour toute la famille, diagnostic et traitement des maladies courantes.</p>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Examens de routine</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Prescriptions médicales</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Suivi des maladies chroniques</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/images/echographie.png" alt="Échographie" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-procedures text-blue-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-blue-800">Échographie</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Examens échographiques de haute qualité avec des équipements modernes pour un diagnostic précis.</p>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Échographie abdominale</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Échographie pelvienne</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Échographie thyroïdienne</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/images/justice.png" alt="Expertise Médico-Légale" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-balance-scale text-blue-600 text-2xl mr-3"></i>
+                            <h3 class="text-xl font-bold text-blue-800">Expertise Médico-Légale</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">En tant que médecin assermenté expert près les tribunaux, je réalise des expertises médicales officielles.</p>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Évaluations d'incapacité</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Expertises pour assurances</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="assets/images/radio.png" alt="Cabinet médical" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-6">À Propos du Dr. Bouchaib HAMYA</h2>
+                    <p class="text-gray-700 mb-4">Avec plus de 38 ans d'expérience en médecine générale et en échographie, le Dr. Bouchaib HAMYA a consacré sa carrière à offrir des soins médicaux de qualité à ses patients.</p>
+                    <p class="text-gray-700 mb-4">Après avoir exercé pendant de nombreuses années à Guelmim, où il a construit une solide réputation, le Dr. Bouchaib HAMYA a récemment ouvert son nouveau cabinet médical à Inzegane pour continuer à servir la population locale.</p>
+                    <p class="text-gray-700 mb-6">En plus de son activité clinique, le Dr. Bouchaib HAMYA est médecin assermenté expert près les tribunaux, mettant son expertise au service de la justice.</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-6">
+                        <p class="text-blue-800 italic">"Ma priorité est d'offrir à chaque patient une écoute attentive, un diagnostic précis et un traitement adapté à sa situation personnelle."</p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white px-4 py-3 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
+                            <span>Diplômé en médecine</span>
+                        </div>
+                        <div class="bg-white px-4 py-3 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-certificate text-blue-600 mr-2"></i>
+                            <span>Spécialisé en échographie</span>
+                        </div>
+                        <div class="bg-white px-4 py-3 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-language text-blue-600 mr-2"></i>
+                            <span>Français, Arabe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Contact & Rendez-vous</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 bg-gray-50 p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-6">Informations de contact</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Adresse du cabinet</h4>
+                                <p class="text-gray-600">Lotissement Najah, Lot n°16 </p>
+                                <p class="text-gray-600">Immeuble Najah  </p>
+                                <p class="text-gray-600">Appartement 6 2ème étage (ascenseur) </p>
+                                <p class="text-gray-600">Inzegane (en face de Marjane) </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-phone-alt text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Téléphone</h4>
+                                <p class="text-gray-600">+212 5 28 87 25 13</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-600">docteurhamya@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-blue-600 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Horaires d'ouverture</h4>
+                                <p class="text-gray-600">Lundi - Vendredi: 9h00 - 18h30</p>
+                                <p class="text-gray-600">Samedi: 9h - 13h</p>
+                                <p class="text-gray-600">Dimanche: Fermé</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Nous trouver</h4>
+                        <img src="assets/images/localisation.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center mb-8">
+                        <i class="fas fa-stethoscope text-white text-2xl mr-3"></i>
+                        <h3 class="text-xl font-bold">Dr. Bouchaib HAMYA</h3>
+                    </div>
+                    <p class="text-blue-200">Cabinet de médecine générale et échographie</p>
+                    <p class="text-blue-200">Médecin assermenté expert près les tribunaux</p>
+                </div>
+                
+                <div class="mb-6 md:mb-0">
+                    <h4 class="font-bold mb-3">Liens utiles</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="text-blue-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#services" class="text-blue-200 hover:text-white transition">Services</a></li>
+                        <li><a href="#apropos" class="text-blue-200 hover:text-white transition">À Propos</a></li>
+                        <li><a href="#contact" class="text-blue-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="border-t border-blue-800 mt-8 pt-6 text-center text-blue-300">
+                <p>&copy; 2025 Cabinet Médical Dr. Bouchaib HAMYA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Calculate the scroll position (accounting for fixed header)
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Appointment Form Submission
+        const appointmentForm = document.getElementById('appointment-form');
+        const appointmentModal = document.getElementById('appointment-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalOk = document.getElementById('modal-ok');
+        
+        appointmentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For this demo, we'll just show the confirmation modal
+            appointmentModal.classList.remove('opacity-0', 'invisible');
+            appointmentModal.classList.add('opacity-100', 'visible');
+            
+            // Reset form
+            appointmentForm.reset();
+        });
+        
+        // Close Modal
+        function closeAppointmentModal() {
+            appointmentModal.classList.remove('opacity-100', 'visible');
+            appointmentModal.classList.add('opacity-0', 'invisible');
+        }
+        
+        closeModal.addEventListener('click', closeAppointmentModal);
+        modalOk.addEventListener('click', closeAppointmentModal);
+        
+        // Close modal when clicking outside
+        appointmentModal.addEventListener('click', (e) => {
+            if (e.target === appointmentModal) {
+                closeAppointmentModal();
+            }
+        });
+    </script>
+</body>
+</html>
