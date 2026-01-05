@@ -38,6 +38,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.x/dist/tailwind.min.css">
     <link rel="stylesheet" href="assets/css/fonts.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <!-- Leaflet CSS & JS (très léger) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
 
     <!-- Icônes -->
     <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
@@ -45,6 +50,41 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
+
+    <style>
+        /* AJOUTEZ CES STYLES APRÈS VOTRE CSS TAILWIND */
+        #leaflet-map img.leaflet-tile {
+            margin: 0 !important;
+            padding: 0 !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        .leaflet-container {
+            background: #e8f4fd !important;
+        }
+
+        /* Réinitialiser les styles qui peuvent cacher la carte */
+        .leaflet-pane,
+        .leaflet-tile,
+        .leaflet-marker-icon,
+        .leaflet-marker-shadow,
+        .leaflet-tile-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .leaflet-tile {
+            filter: inherit;
+            visibility: visible;
+            width: 256px;
+            height: 256px;
+        }
+
+        
+    </style>
+
 
     <!-- Schema.org pour le référencement -->
     <script type="application/ld+json">
@@ -88,6 +128,8 @@
         }
     }
     </script>
+
+
 
     <title>Dr. Bouchaib HAMYA - Médecin Généraliste & Échographie à Inzegane | 38 ans d'expérience</title>
 </head>
@@ -756,355 +798,349 @@
 </script>
 
     <!-- Contact Section - VERSION OPTIMISÉE AVEC GOOGLE MAPS -->
-<!-- Contact Section - VERSION OPTIMISÉE AVEC LEAFLET -->
-<section id="contact" class="py-16 bg-white scroll-mt-20" 
-         itemscope 
-         itemtype="https://schema.org/MedicalClinic"
-         aria-labelledby="contact-title">
+    <!-- Contact Section - VERSION OPTIMISÉE AVEC LEAFLET -->
+    <section id="contact" class="py-16 bg-white scroll-mt-20" itemscope itemtype="https://schema.org/MedicalClinic"
+        aria-labelledby="contact-title">
 
-    <div class="container mx-auto px-4">
-        <!-- Titre avec Schema.org -->
-        <div class="text-center mb-12">
-            <h2 id="contact-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
-                Contact & <span itemprop="medicalSpecialty">Rendez-vous Médicaux</span>
-            </h2>
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Prenez rendez-vous avec le <strong>Dr. Bouchaib HAMYA</strong>, médecin généraliste à Inzegane
-            </p>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mt-4" aria-hidden="true"></div>
-        </div>
+        <div class="container mx-auto px-4">
+            <!-- Titre avec Schema.org -->
+            <div class="text-center mb-12">
+                <h2 id="contact-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
+                    Contact & <span itemprop="medicalSpecialty">Rendez-vous Médicaux</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Prenez rendez-vous avec le <strong>Dr. Bouchaib HAMYA</strong>, médecin généraliste à Inzegane
+                </p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4" aria-hidden="true"></div>
+            </div>
 
-        <!-- Grille responsive -->
-        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Grille responsive -->
+            <div class="flex flex-col lg:flex-row gap-8">
 
-            <!-- Informations de contact (gauche) -->
-            <div class="lg:w-1/2 bg-gradient-to-br from-gray-50 to-blue-50 p-6 md:p-8 rounded-xl shadow-lg">
-                <h3 class="text-2xl font-bold text-blue-800 mb-6 flex items-center">
-                    <i class="fas fa-address-card text-blue-600 mr-3" aria-hidden="true"></i>
-                    Informations de contact
-                </h3>
+                <!-- Informations de contact (gauche) -->
+                <div class="lg:w-1/2 bg-gradient-to-br from-gray-50 to-blue-50 p-6 md:p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-6 flex items-center">
+                        <i class="fas fa-address-card text-blue-600 mr-3" aria-hidden="true"></i>
+                        Informations de contact
+                    </h3>
 
-                <div class="space-y-6" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <div class="space-y-6" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
 
-                    <!-- Adresse avec microdonnées -->
-                    <div class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-map-marker-alt text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Adresse du cabinet</h4>
-                            <div class="text-gray-600 space-y-1">
-                                <p itemprop="streetAddress">Lotissement Najah, Lot n°16</p>
-                                <p>Immeuble Najah</p>
-                                <p>Appartement 6 - 2ème étage <span class="text-green-600 font-medium">(ascenseur disponible)</span></p>
-                                <p>
-                                    <span itemprop="addressLocality">Inzegane</span>
-                                    <span class="text-blue-600 font-medium">(en face de Marjane)</span>
-                                </p>
-                                <meta itemprop="addressCountry" content="MA">
-                                <meta itemprop="addressRegion" content="Souss-Massa">
+                        <!-- Adresse avec microdonnées -->
+                        <div
+                            class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
                             </div>
-                            <div class="mt-3">
-                                <button onclick="openDirections()" 
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Adresse du cabinet</h4>
+                                <div class="text-gray-600 space-y-1">
+                                    <p itemprop="streetAddress">Lotissement Najah, Lot n°16</p>
+                                    <p>Immeuble Najah</p>
+                                    <p>Appartement 6 - 2ème étage <span class="text-green-600 font-medium">(ascenseur
+                                            disponible)</span></p>
+                                    <p>
+                                        <span itemprop="addressLocality">Inzegane</span>
+                                        <span class="text-blue-600 font-medium">(en face de Marjane)</span>
+                                    </p>
+                                    <meta itemprop="addressCountry" content="MA">
+                                    <meta itemprop="addressRegion" content="Souss-Massa">
+                                </div>
+                                <div class="mt-3">
+                                    <button onclick="openDirections()"
                                         class="inline-flex items-center text-sm text-blue-700 hover:text-blue-900 font-medium">
-                                    <i class="fas fa-directions mr-2" aria-hidden="true"></i>
-                                    Itinéraire
+                                        <i class="fas fa-directions mr-2" aria-hidden="true"></i>
+                                        Itinéraire
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Téléphone avec click-to-call -->
+                        <div
+                            class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-phone-alt text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Téléphone</h4>
+                                <a href="tel:+212528872513" itemprop="telephone"
+                                    class="text-gray-800 hover:text-blue-700 text-lg font-semibold transition-colors"
+                                    aria-label="Appeler le cabinet du Docteur HAMYA">
+                                    <i class="fas fa-phone-volume mr-2 text-green-600" aria-hidden="true"></i>
+                                    +212 5 28 87 25 13
+                                </a>
+                                <p class="text-sm text-gray-500 mt-1">Appel direct depuis mobile/ordinateur</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div
+                            class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-envelope text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Email</h4>
+                                <a href="mailto:docteurhamya@gmail.com" itemprop="email"
+                                    class="text-gray-800 hover:text-blue-700 font-medium transition-colors break-all"
+                                    aria-label="Envoyer un email au Docteur HAMYA">
+                                    <i class="fas fa-paper-plane mr-2 text-blue-500" aria-hidden="true"></i>
+                                    docteurhamya@gmail.com
+                                </a>
+                                <p class="text-sm text-gray-500 mt-1">Réponse sous 24-48 heures</p>
+                            </div>
+                        </div>
+
+                        <!-- Horaires avec Schema.org -->
+                        <div
+                            class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-clock text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-2">Horaires d'ouverture</h4>
+                                <div class="text-gray-600 space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="font-medium">Lundi - Vendredi</span>&nbsp;
+                                        <span class="text-green-700 font-semibold">9h00 - 18h30</span>
+                                        <meta itemprop="openingHours" content="Mo-Fr 09:00-18:30">
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="font-medium">Samedi</span>
+                                        <span class="text-green-700 font-semibold">9h00 - 13h00</span>
+                                        <meta itemprop="openingHours" content="Sa 09:00-13:00">
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="font-medium">Dimanche</span>
+                                        <span class="text-red-600 font-semibold">Fermé</span>
+                                    </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-t border-gray-200">
+                                    <p class="text-sm text-amber-700 flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
+                                        Sur rendez-vous uniquement
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Boutons d'action -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                            <a href="tel:+212528872513"
+                                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                                aria-label="Appeler maintenant pour prendre rendez-vous">
+                                <i class="fas fa-phone mr-2" aria-hidden="true"></i>
+                                Appeler maintenant
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte Leaflet + OpenStreetMap (droite) -->
+                <div class="lg:w-1/2">
+                    <div class="sticky top-24">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold text-blue-800 flex items-center">
+                                <i class="fas fa-map-marked-alt text-blue-600 mr-3"></i>
+                                Localisation
+                            </h3>
+                            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                                <i class="fas fa-car mr-1" aria-hidden="true"></i>
+                                Parking facile
+                            </span>
+                        </div>
+
+                        <!-- Conteneur de la carte Leaflet -->
+                        <div id="leaflet-map-container"
+                            class="rounded-xl overflow-hidden shadow-xl border-2 border-blue-200 h-96 relative">
+
+                            <!-- Placeholder pendant le chargement -->
+                            <div id="map-placeholder"
+                                class="absolute inset-0 bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center z-10 transition-opacity duration-500">
+                                <div class="text-center p-6">
+                                    <div class="inline-block p-4 bg-white rounded-full shadow-lg mb-4">
+                                        <i class="fas fa-map text-blue-400 text-4xl"></i>
+                                    </div>
+                                    <p class="text-gray-600 font-medium">Chargement de la carte...</p>
+                                    <p class="text-gray-400 text-sm mt-1">Cabinet médical Dr. HAMYA</p>
+                                </div>
+                            </div>
+
+                            <!-- La carte Leaflet sera injectée ici -->
+                            <div id="leaflet-map" class="h-full w-full"></div>
+
+                            <!-- Contrôles de la carte -->
+                            <div class="absolute bottom-4 right-4 z-20 flex flex-col gap-2">
+                                <button onclick="zoomIn()"
+                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
+                                    aria-label="Zoomer">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button onclick="zoomOut()"
+                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
+                                    aria-label="Dézoomer">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button onclick="locateUser()"
+                                    class="bg-blue-600 text-white w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
+                                    aria-label="Me localiser">
+                                    <i class="fas fa-location-arrow"></i>
                                 </button>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Téléphone avec click-to-call -->
-                    <div class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-phone-alt text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
+                        <!-- Instructions d'accès -->
+                        <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+                                <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
+                                Comment nous trouver ?
+                            </h4>
+                            <ul class="text-gray-700 text-sm space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-store text-green-600 mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>En face du <strong>Marjane Inzegane</strong> - très visible</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-elevator text-blue-600 mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Ascenseur disponible jusqu'au 2ème étage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-wheelchair text-purple-600 mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Accessible aux personnes à mobilité réduite (PMR)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-parking text-amber-600 mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Parking gratuit devant le bâtiment</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Téléphone</h4>
-                            <a href="tel:+212528872513" itemprop="telephone"
-                               class="text-gray-800 hover:text-blue-700 text-lg font-semibold transition-colors"
-                               aria-label="Appeler le cabinet du Docteur HAMYA">
-                                <i class="fas fa-phone-volume mr-2 text-green-600" aria-hidden="true"></i>
-                                +212 5 28 87 25 13
+
+                        <!-- Coordonnées GPS pour navigation -->
+                        <div class="mt-4 text-center">
+                                <a href="https://maps.app.goo.gl/S8nEuBciGKWgReLq6" target="_blank">
+                                Ouvrir la carte Google Maps 
                             </a>
-                            <p class="text-sm text-gray-500 mt-1">Appel direct depuis mobile/ordinateur</p>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Email -->
-                    <div class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-envelope text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Email</h4>
-                            <a href="mailto:docteurhamya@gmail.com" itemprop="email"
-                               class="text-gray-800 hover:text-blue-700 font-medium transition-colors break-all"
-                               aria-label="Envoyer un email au Docteur HAMYA">
-                                <i class="fas fa-paper-plane mr-2 text-blue-500" aria-hidden="true"></i>
-                                docteurhamya@gmail.com
-                            </a>
-                            <p class="text-sm text-gray-500 mt-1">Réponse sous 24-48 heures</p>
-                        </div>
+            <!-- Section supplémentaire pour SEO local -->
+            <div class="mt-12 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-2xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold mb-3">Besoin d'un médecin généraliste à Inzegane ?</h3>
+                        <p class="text-blue-100">
+                            Le <strong>Dr. Bouchaib HAMYA</strong> vous reçoit dans son cabinet moderne pour des
+                            consultations
+                            de médecine générale, échographie, premiers soins et expertises médico-légales.
+                            38 ans d'expérience au service de votre santé.
+                        </p>
                     </div>
-
-                    <!-- Horaires avec Schema.org -->
-                    <div class="flex items-start p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-clock text-blue-600 text-xl mt-1 mr-4" aria-hidden="true"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 mb-2">Horaires d'ouverture</h4>
-                            <div class="text-gray-600 space-y-2">
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Lundi - Vendredi</span>&nbsp;
-                                    <span class="text-green-700 font-semibold">9h00 - 18h30</span>
-                                    <meta itemprop="openingHours" content="Mo-Fr 09:00-18:30">
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Samedi</span>
-                                    <span class="text-green-700 font-semibold">9h00 - 13h00</span>
-                                    <meta itemprop="openingHours" content="Sa 09:00-13:00">
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Dimanche</span>
-                                    <span class="text-red-600 font-semibold">Fermé</span>
-                                </div>
-                            </div>
-                            <div class="mt-3 pt-3 border-t border-gray-200">
-                                <p class="text-sm text-amber-700 flex items-center">
-                                    <i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
-                                    Sur rendez-vous uniquement
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Boutons d'action -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                    <div class="md:w-1/3 text-center md:text-right">
                         <a href="tel:+212528872513"
-                           class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
-                           aria-label="Appeler maintenant pour prendre rendez-vous">
-                            <i class="fas fa-phone mr-2" aria-hidden="true"></i>
-                            Appeler maintenant
+                            class="inline-flex items-center bg-white text-blue-900 hover:bg-blue-100 font-bold py-3 px-6 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-phone-volume mr-3 text-xl" aria-hidden="true"></i>
+                            Appelez-nous
                         </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Carte Leaflet + OpenStreetMap (droite) -->
-            <div class="lg:w-1/2">
-                <div class="sticky top-24">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-blue-800 flex items-center">
-                            <i class="fas fa-map-marked-alt text-blue-600 mr-3"></i>
-                            Localisation
-                        </h3>
-                        <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-                            <i class="fas fa-car mr-1" aria-hidden="true"></i>
-                            Parking facile
-                        </span>
-                    </div>
 
-                    <!-- Conteneur de la carte Leaflet -->
-                    <div id="leaflet-map-container" 
-                         class="rounded-xl overflow-hidden shadow-xl border-2 border-blue-200 h-96 relative">
 
-                        <!-- Placeholder pendant le chargement -->
-                        <div id="map-placeholder" 
-                             class="absolute inset-0 bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center z-10 transition-opacity duration-500">
-                            <div class="text-center p-6">
-                                <div class="inline-block p-4 bg-white rounded-full shadow-lg mb-4">
-                                    <i class="fas fa-map text-blue-400 text-4xl"></i>
-                                </div>
-                                <p class="text-gray-600 font-medium">Chargement de la carte...</p>
-                                <p class="text-gray-400 text-sm mt-1">Cabinet médical Dr. HAMYA</p>
-                            </div>
-                        </div>
+    <!-- Script pour Leaflet -->
+    <script>
+        // Coordonnées du cabinet
+        const CABINET_LOCATION = {
+            lat: 30.359826373778983,
+            lng: -9.526295729030254,
+            title: "Cabinet Dr. HAMYA",
+            address: "Lotissement Najah, Inzegane (face Marjane)"
+        };
 
-                        <!-- La carte Leaflet sera injectée ici -->
-                        <div id="leaflet-map" class="h-full w-full"></div>
-                        
-                        <!-- Contrôles de la carte -->
-                        <div class="absolute bottom-4 right-4 z-20 flex flex-col gap-2">
-                            <button onclick="zoomIn()" 
-                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
-                                    aria-label="Zoomer">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                            <button onclick="zoomOut()" 
-                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
-                                    aria-label="Dézoomer">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button onclick="locateUser()" 
-                                    class="bg-blue-600 text-white w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
-                                    aria-label="Me localiser">
-                                <i class="fas fa-location-arrow"></i>
-                            </button>
-                        </div>
-                    </div>
+        // Variables globales
+        let leafletMap = null;
+        let leafletMarker = null;
+        let userLocationMarker = null;
 
-                    <!-- Instructions d'accès -->
-                    <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <h4 class="font-bold text-blue-800 mb-2 flex items-center">
-                            <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
-                            Comment nous trouver ?
-                        </h4>
-                        <ul class="text-gray-700 text-sm space-y-2">
-                            <li class="flex items-start">
-                                <i class="fas fa-store text-green-600 mr-2 mt-1" aria-hidden="true"></i>
-                                <span>En face du <strong>Marjane Inzegane</strong> - très visible</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-elevator text-blue-600 mr-2 mt-1" aria-hidden="true"></i>
-                                <span>Ascenseur disponible jusqu'au 2ème étage</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-wheelchair text-purple-600 mr-2 mt-1" aria-hidden="true"></i>
-                                <span>Accessible aux personnes à mobilité réduite (PMR)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-parking text-amber-600 mr-2 mt-1" aria-hidden="true"></i>
-                                <span>Parking gratuit devant le bâtiment</span>
-                            </li>
-                        </ul>
-                    </div>
+        // Initialiser la carte Leaflet
+        function initLeafletMap() {
+            console.log('🗺️ Initialisation de Leaflet...');
 
-                    <!-- Coordonnées GPS pour navigation -->
-                    <div class="mt-4 text-center">
-                        <p class="text-gray-600 text-sm">
-                            <i class="fas fa-map-pin text-red-500 mr-1" aria-hidden="true"></i>
-                            Coordonnées GPS :
-                            <span class="font-mono bg-gray-100 px-2 py-1 rounded">30.359826, -9.526296</span>
-                        </p>
-                    </div>
-                </div>
+            // Masquer le placeholder
+            const placeholder = document.getElementById('map-placeholder');
+            if (placeholder) {
+                placeholder.style.opacity = '0';
+                setTimeout(() => {
+                    placeholder.style.display = 'none';
+                }, 500);
+            }
+
+            // Créer la carte
+            leafletMap = L.map('leaflet-map').setView([30.3595828, -9.5258805], 17);
+
+            // Ajouter les tuiles OpenStreetMap
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                className: 'leaflet-tile'
+            }).addTo(leafletMap);
+
+            // Ajouter un marqueur personnalisé
+            const customIcon = L.divIcon({
+                html: `
+        <div style="
+            width: 0;
+            height: 0;
+            position: relative;
+        ">
+            <div style="
+                width: 40px;
+                height: 40px;
+                background: #1e40af;
+                border-radius: 50% 50% 50% 0;
+                transform: rotate(-45deg);
+                position: absolute;
+                top: -40px;
+                left: -20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            "></div>
+            <div style="
+                width: 30px;
+                height: 30px;
+                background: white;
+                border-radius: 50%;
+                position: absolute;
+                top: -35px;
+                left: -15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                color: #1e40af;
+                font-weight: bold;
+            ">
+                <i class="fas fa-plus" style="transform: rotate(45deg);"></i>
             </div>
         </div>
+    `,
+    iconSize: [1, 1],      // Taille minimale
+    iconAnchor: [0.5, 1],  // Ancrage précis
+    className: 'leaflet-marker-custom-fixed'
+            });
 
-        <!-- Section supplémentaire pour SEO local -->
-        <div class="mt-12 bg-gradient-to-r from-blue-900 to-blue-800 text-white rounded-2xl p-6 md:p-8">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-2/3 mb-6 md:mb-0">
-                    <h3 class="text-2xl font-bold mb-3">Besoin d'un médecin généraliste à Inzegane ?</h3>
-                    <p class="text-blue-100">
-                        Le <strong>Dr. Bouchaib HAMYA</strong> vous reçoit dans son cabinet moderne pour des
-                        consultations
-                        de médecine générale, échographie, premiers soins et expertises médico-légales.
-                        38 ans d'expérience au service de votre santé.
-                    </p>
-                </div>
-                <div class="md:w-1/3 text-center md:text-right">
-                    <a href="tel:+212528872513"
-                       class="inline-flex items-center bg-white text-blue-900 hover:bg-blue-100 font-bold py-3 px-6 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        <i class="fas fa-phone-volume mr-3 text-xl" aria-hidden="true"></i>
-                        Appelez-nous
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            // Marqueur du cabinet
+            leafletMarker = L.marker([30.3595828, -9.5258805], {
+                icon: customIcon,
+                title: CABINET_LOCATION.title
+            }).addTo(leafletMap);
 
-<!-- Leaflet CSS & JS (très léger) -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-      media="print" 
-      onload="this.media='all'" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""
-        defer></script>
-
-<!-- Script pour Leaflet -->
-<script>
-// Coordonnées du cabinet
-const CABINET_LOCATION = {
-    lat: 30.359826373778983,
-    lng: -9.526295729030254,
-    title: "Cabinet Dr. HAMYA",
-    address: "Lotissement Najah, Inzegane (face Marjane)"
-};
-
-// Variables globales
-let leafletMap = null;
-let leafletMarker = null;
-let userLocationMarker = null;
-
-// Initialiser la carte Leaflet
-function initLeafletMap() {
-    console.log('🗺️ Initialisation de Leaflet...');
-    
-    // Masquer le placeholder
-    const placeholder = document.getElementById('map-placeholder');
-    if (placeholder) {
-        placeholder.style.opacity = '0';
-        setTimeout(() => {
-            placeholder.style.display = 'none';
-        }, 500);
-    }
-    
-    // Créer la carte
-    leafletMap = L.map('leaflet-map').setView([CABINET_LOCATION.lat, CABINET_LOCATION.lng], 17);
-    
-    // Ajouter les tuiles OpenStreetMap
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        className: 'leaflet-tile'
-    }).addTo(leafletMap);
-    
-    // Ajouter un marqueur personnalisé
-    const customIcon = L.divIcon({
-        html: `
-            <div style="position: relative;">
-                <div style="
-                    width: 40px;
-                    height: 40px;
-                    background: #1e40af;
-                    border-radius: 50% 50% 50% 0;
-                    transform: rotate(-45deg);
-                    position: absolute;
-                    top: -40px;
-                    left: -20px;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-                "></div>
-                <div style="
-                    width: 30px;
-                    height: 30px;
-                    background: white;
-                    border-radius: 50%;
-                    position: absolute;
-                    top: -35px;
-                    left: -15px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 14px;
-                    color: #1e40af;
-                    font-weight: bold;
-                ">
-                    <i class="fas fa-plus" style="transform: rotate(45deg);"></i>
-                </div>
-            </div>
-        `,
-        iconSize: [40, 40],
-        iconAnchor: [20, 40],
-        popupAnchor: [0, -40],
-        className: 'leaflet-custom-marker'
-    });
-    
-    // Marqueur du cabinet
-    leafletMarker = L.marker([CABINET_LOCATION.lat, CABINET_LOCATION.lng], {
-        icon: customIcon,
-        title: CABINET_LOCATION.title,
-        riseOnHover: true
-    }).addTo(leafletMap);
-    
-    // Popup d'information
-    const popupContent = `
+            // Popup d'information
+            const popupContent = `
         <div style="padding: 10px; max-width: 250px; font-family: 'Montserrat', sans-serif;">
             <h3 style="margin: 0 0 8px 0; color: #1e40af; font-weight: bold; font-size: 16px;">
                 Dr. Bouchaib HAMYA
@@ -1122,172 +1158,172 @@ function initLeafletMap() {
                     <i class="fas fa-phone" style="margin-right: 5px;"></i>Appeler
                 </a>
                 <button onclick="openDirections()" 
-                        style="flex: 1; padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; font-size: 13px; cursor: pointer;">
+                        style="flex: 1; padding: 6px 10px; background: #3b82f6; color: white; border: none; border-radius: 4px; font-size: 13px; cursor: pointer;">
                     <i class="fas fa-directions" style="margin-right: 5px;"></i>Itinéraire
                 </button>
             </div>
         </div>
     `;
-    
-    leafletMarker.bindPopup(popupContent).openPopup();
-    
-    // Ajouter un cercle de rayon
-    L.circle([CABINET_LOCATION.lat, CABINET_LOCATION.lng], {
-        color: '#1e40af',
-        fillColor: '#3b82f6',
-        fillOpacity: 0.1,
-        radius: 50
-    }).addTo(leafletMap);
-    
-    console.log('✅ Carte Leaflet chargée');
-    
-    // Adapter la carte à la taille du conteneur
-    setTimeout(() => {
-        leafletMap.invalidateSize();
-    }, 100);
-}
 
-// Ouvrir les directions dans Google Maps
-function openDirections() {
-    const url = `https://www.google.com/maps/dir/?api=1&destination=${CABINET_LOCATION.lat},${CABINET_LOCATION.lng}&travelmode=driving`;
-    window.open(url, '_blank', 'noopener,noreferrer');
-}
+            leafletMarker.bindPopup(popupContent).openPopup();
 
-// Localiser l'utilisateur
-function locateUser() {
-    if (!navigator.geolocation) {
-        alert("La géolocalisation n'est pas supportée par votre navigateur.");
-        return;
-    }
-    
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            const userLat = position.coords.latitude;
-            const userLng = position.coords.longitude;
-            
-            // Supprimer l'ancien marqueur s'il existe
-            if (userLocationMarker) {
-                leafletMap.removeLayer(userLocationMarker);
+            // Ajouter un cercle de rayon
+            L.circle([30.3595828, -9.5258805], {
+                color: '#1e40af',
+                fillColor: '#3b82f6',
+                fillOpacity: 0.1,
+                radius: 50
+            }).addTo(leafletMap);
+
+            console.log('✅ Carte Leaflet chargée');
+
+            // Adapter la carte à la taille du conteneur
+            setTimeout(() => {
+                leafletMap.invalidateSize();
+            }, 100);
+        }
+
+        // Ouvrir les directions dans Google Maps
+        function openDirections() {
+            const url = `https://www.google.com/maps/dir/?api=1&destination=${CABINET_LOCATION.lat},${CABINET_LOCATION.lng}&travelmode=driving`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        // Localiser l'utilisateur
+        function locateUser() {
+            if (!navigator.geolocation) {
+                alert("La géolocalisation n'est pas supportée par votre navigateur.");
+                return;
             }
-            
-            // Ajouter un nouveau marqueur pour l'utilisateur
-            userLocationMarker = L.marker([userLat, userLng], {
-                icon: L.divIcon({
-                    html: '<div style="background: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.3);"></div>',
-                    iconSize: [20, 20],
-                    className: 'leaflet-user-marker'
-                }),
-                title: "Votre position"
-            }).addTo(leafletMap);
-            
-            // Centrer la carte sur la position de l'utilisateur
-            leafletMap.setView([userLat, userLng], 15);
-            
-            // Ajouter une ligne entre l'utilisateur et le cabinet
-            const polyline = L.polyline([
-                [userLat, userLng],
-                [CABINET_LOCATION.lat, CABINET_LOCATION.lng]
-            ], {
-                color: '#3b82f6',
-                weight: 3,
-                opacity: 0.7,
-                dashArray: '10, 10'
-            }).addTo(leafletMap);
-            
-            // Calculer la distance
-            const distance = calculateDistance(userLat, userLng, CABINET_LOCATION.lat, CABINET_LOCATION.lng);
-            
-            // Afficher une popup
-            userLocationMarker.bindPopup(`
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Supprimer l'ancien marqueur s'il existe
+                    if (userLocationMarker) {
+                        leafletMap.removeLayer(userLocationMarker);
+                    }
+
+                    // Ajouter un nouveau marqueur pour l'utilisateur
+                    userLocationMarker = L.marker([userLat, userLng], {
+                        icon: L.divIcon({
+                            html: '<div style="background: #10b981; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.3);"></div>',
+                            iconSize: [20, 20],
+                            className: 'leaflet-user-marker'
+                        }),
+                        title: "Votre position"
+                    }).addTo(leafletMap);
+
+                    // Centrer la carte sur la position de l'utilisateur
+                    leafletMap.setView([userLat, userLng], 15);
+
+                    // Ajouter une ligne entre l'utilisateur et le cabinet
+                    const polyline = L.polyline([
+                        [userLat, userLng],
+                        [CABINET_LOCATION.lat, CABINET_LOCATION.lng]
+                    ], {
+                        color: '#3b82f6',
+                        weight: 3,
+                        opacity: 0.7,
+                        dashArray: '10, 10'
+                    }).addTo(leafletMap);
+
+                    // Calculer la distance
+                    const distance = calculateDistance(userLat, userLng, CABINET_LOCATION.lat, CABINET_LOCATION.lng);
+
+                    // Afficher une popup
+                    userLocationMarker.bindPopup(`
                 <div style="font-family: 'Montserrat', sans-serif; padding: 5px;">
                     <strong>Vous êtes ici</strong><br>
                     Distance au cabinet : ${distance} km
                 </div>
             `).openPopup();
-            
-            // Supprimer la ligne après 10 secondes
-            setTimeout(() => {
-                if (polyline) leafletMap.removeLayer(polyline);
-            }, 10000);
-        },
-        (error) => {
-            console.error("Erreur de géolocalisation:", error);
-            alert("Impossible de déterminer votre position.");
-        },
-        {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
+
+                    // Supprimer la ligne après 10 secondes
+                    setTimeout(() => {
+                        if (polyline) leafletMap.removeLayer(polyline);
+                    }, 10000);
+                },
+                (error) => {
+                    console.error("Erreur de géolocalisation:", error);
+                    alert("Impossible de déterminer votre position.");
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                }
+            );
         }
-    );
-}
 
-// Calculer la distance entre deux points
-function calculateDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Rayon de la Terre en km
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a = 
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-        Math.sin(dLon/2) * Math.sin(dLon/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    return (R * c).toFixed(1);
-}
+        // Calculer la distance entre deux points
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Rayon de la Terre en km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return (R * c).toFixed(1);
+        }
 
-// Contrôles de zoom
-function zoomIn() {
-    if (leafletMap) {
-        leafletMap.zoomIn();
-    }
-}
-
-function zoomOut() {
-    if (leafletMap) {
-        leafletMap.zoomOut();
-    }
-}
-
-// Chargement différé
-document.addEventListener('DOMContentLoaded', function() {
-    // Vérifier si Leaflet est chargé
-    if (typeof L === 'undefined') {
-        console.error('❌ Leaflet non chargé');
-        return;
-    }
-    
-    // Charger la carte quand elle entre dans la vue
-    const mapContainer = document.getElementById('leaflet-map-container');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                initLeafletMap();
-                observer.unobserve(entry.target);
+        // Contrôles de zoom
+        function zoomIn() {
+            if (leafletMap) {
+                leafletMap.zoomIn();
             }
-        });
-    }, {
-        rootMargin: '100px',
-        threshold: 0.1
-    });
-    
-    if (mapContainer) {
-        observer.observe(mapContainer);
-    }
-    
-    // Fallback: charger après 2 secondes max
-    setTimeout(() => {
-        if (!leafletMap && mapContainer) {
-            initLeafletMap();
         }
-    }, 2000);
-});
 
-// Fallback si Leaflet ne charge pas
-function showMapFallback() {
-    const placeholder = document.getElementById('map-placeholder');
-    if (placeholder) {
-        placeholder.innerHTML = `
+        function zoomOut() {
+            if (leafletMap) {
+                leafletMap.zoomOut();
+            }
+        }
+
+        // Chargement différé
+        document.addEventListener('DOMContentLoaded', function () {
+            // Vérifier si Leaflet est chargé
+            if (typeof L === 'undefined') {
+                console.error('❌ Leaflet non chargé');
+                return;
+            }
+
+            // Charger la carte quand elle entre dans la vue
+            const mapContainer = document.getElementById('leaflet-map-container');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        initLeafletMap();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '100px',
+                threshold: 0.1
+            });
+
+            if (mapContainer) {
+                observer.observe(mapContainer);
+            }
+
+            // Fallback: charger après 2 secondes max
+            setTimeout(() => {
+                if (!leafletMap && mapContainer) {
+                    initLeafletMap();
+                }
+            }, 2000);
+        });
+
+        // Fallback si Leaflet ne charge pas
+        function showMapFallback() {
+            const placeholder = document.getElementById('map-placeholder');
+            if (placeholder) {
+                placeholder.innerHTML = `
             <div class="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-gray-100">
                 <i class="fas fa-exclamation-triangle text-amber-500 text-4xl mb-4"></i>
                 <p class="text-gray-700 mb-2">Carte non disponible</p>
@@ -1299,109 +1335,117 @@ function showMapFallback() {
                 </a>
             </div>
         `;
-    }
-}
+            }
+        }
 
-// Vérifier le chargement de Leaflet
-setTimeout(() => {
-    if (typeof L === 'undefined') {
-        console.warn('⚠️ Leaflet non chargé, affichage du fallback');
-        showMapFallback();
-    }
-}, 3000);
-</script>
+        // Vérifier le chargement de Leaflet
+        setTimeout(() => {
+            if (typeof L === 'undefined') {
+                console.warn('⚠️ Leaflet non chargé, affichage du fallback');
+                showMapFallback();
+            }
+        }, 3000);
+    </script>
 
-<!-- CSS pour Leaflet -->
-<style>
-    #leaflet-map-container {
-        position: relative;
-        min-height: 384px;
-    }
-    
-    #leaflet-map {
-        height: 100%;
-        width: 100%;
-        z-index: 1;
-    }
-    
-    /* Personnalisation Leaflet */
-    .leaflet-container {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 14px;
-    }
-    
-    .leaflet-popup-content {
-        margin: 13px 19px;
-    }
-    
-    .leaflet-popup-content-wrapper {
-        border-radius: 8px;
-        box-shadow: 0 3px 14px rgba(0,0,0,0.2);
-    }
-    
-    .leaflet-custom-marker {
-        background: none !important;
-        border: none !important;
-    }
-    
-    .leaflet-user-marker {
-        background: none !important;
-        border: none !important;
-    }
-    
-    /* Animation de chargement */
-    @keyframes pulse {
-        0%, 100% { opacity: 0.6; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.05); }
-    }
-    
-    #map-placeholder i {
-        animation: pulse 2s infinite;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
+    <!-- CSS pour Leaflet -->
+    <style>
         #leaflet-map-container {
-            height: 300px;
+            position: relative;
+            min-height: 384px;
         }
-        
-        .leaflet-control-container {
-            transform: scale(0.9);
-            transform-origin: bottom right;
-        }
-    }
-    
-    /* Amélioration de l'accessibilité */
-    .leaflet-container:focus {
-        outline: 3px solid #3b82f6;
-        outline-offset: 2px;
-    }
-    
-    /* Boutons de contrôle */
-    button:focus {
-        outline: 2px solid #3b82f6;
-        outline-offset: 2px;
-    }
-</style>
 
-<!-- Fallback pour les navigateurs sans JavaScript -->
-<noscript>
-    <div class="mt-4">
-        <a href="https://www.openstreetmap.org/?mlat=30.359826&mlon=-9.526296#map=17/30.359826/-9.526296" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="block rounded-xl overflow-hidden shadow-xl border-2 border-blue-200">
-            <div class="h-96 bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col items-center justify-center">
-                <div class="text-center p-6">
-                    <i class="fas fa-external-link-alt text-blue-400 text-5xl mb-4"></i>
-                    <h4 class="text-xl font-bold text-gray-800 mb-2">Cabinet Dr. HAMYA</h4>
-                    <p class="text-gray-600">Cliquez pour voir sur OpenStreetMap</p>
-                    <p class="text-gray-500 text-sm mt-2">Inzegane (face Marjane)</p>
+        #leaflet-map {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+        }
+
+        /* Personnalisation Leaflet */
+        .leaflet-container {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .leaflet-popup-content {
+            margin: 13px 19px;
+        }
+
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            box-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .leaflet-custom-marker {
+            background: none !important;
+            border: none !important;
+        }
+
+        .leaflet-user-marker {
+            background: none !important;
+            border: none !important;
+        }
+
+        /* Animation de chargement */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        #map-placeholder i {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #leaflet-map-container {
+                height: 300px;
+            }
+
+            .leaflet-control-container {
+                transform: scale(0.9);
+                transform-origin: bottom right;
+            }
+        }
+
+        /* Amélioration de l'accessibilité */
+        .leaflet-container:focus {
+            outline: 3px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        /* Boutons de contrôle */
+        button:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+
+    <!-- Fallback pour les navigateurs sans JavaScript -->
+    <noscript>
+        <div class="mt-4">
+            <a href="https://www.openstreetmap.org/?mlat=30.359826&mlon=-9.526296#map=17/30.359826/-9.526296"
+                target="_blank" rel="noopener noreferrer"
+                class="block rounded-xl overflow-hidden shadow-xl border-2 border-blue-200">
+                <div class="h-96 bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col items-center justify-center">
+                    <div class="text-center p-6">
+                        <i class="fas fa-external-link-alt text-blue-400 text-5xl mb-4"></i>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">Cabinet Dr. HAMYA</h4>
+                        <p class="text-gray-600">Cliquez pour voir sur OpenStreetMap</p>
+                        <p class="text-gray-500 text-sm mt-2">Inzegane (face Marjane)</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
-</noscript>
+            </a>
+        </div>
+    </noscript>
 
 
     <!-- Script pour optimiser le chargement de Google Maps -->
@@ -1496,55 +1540,7 @@ setTimeout(() => {
         });
     </script>
 
-    <!-- CSS pour l'optimisation de la carte -->
-    <style>
-        .map-placeholder {
-            transition: opacity 0.5s ease;
-        }
 
-        #google-map-iframe {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        #google-map-iframe.loaded {
-            opacity: 1;
-        }
-
-        /* Animation de chargement */
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.6;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        .map-placeholder i {
-            animation: pulse 2s infinite;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .map-container {
-                height: 300px;
-            }
-
-            .map-placeholder {
-                height: 300px;
-            }
-        }
-
-        /* Amélioration de l'accessibilité */
-        .map-container:focus-within {
-            outline: 3px solid #3b82f6;
-            outline-offset: 2px;
-        }
-    </style>
 
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-8">
