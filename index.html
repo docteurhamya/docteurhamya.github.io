@@ -13,14 +13,10 @@
     <meta name="author" content="Cabinet Médical Dr. Bouchaib HAMYA">
 
     <!-- Open Graph pour les réseaux sociaux -->
-    <meta property="og:title" content="Cabinet Médical Dr. Bouchaib HAMYA - Médecine Générale & Échographie | Inzegane">
+    <meta property="og:title"
+        content="Cabinet Médical Dr. Bouchaib HAMYA - Médecine Générale & Échographie à Inzegane près d’Agadir">
     <meta property="og:description"
-        content="38 ans d'expérience médicale. Médecin généraliste et échographie à Inzegane. 
-        Médecin à Inzegane Maroc médecin Inzegane. doctors in Inzegane Morocco general practitioner Inzegane clinic address phone. 
-        Médecin Inzegane médecin généraliste Inzegane.
-        médecins Agadir liste médecins Agadir.
-        Doctors in Agadir Morocco doctors list Agadir clinics hospitals Agadir.
-        médecins à Agadir médecins Agadir doctors">
+        content="38 ans d'expérience médicale. Médecin généraliste et échographie à Inzegane près d’Agadir. Consultations médicales, échographie, suivi de santé. Cabinet médical au Maroc.">
     <meta property="og:image" content="https://docteurhamya.github.io/assets/images/doctor.webp">
     <meta property="og:url" content="https://docteurhamya.github.io">
     <meta property="og:type" content="website">
@@ -88,96 +84,138 @@
         }
 
         /* Optimisations spécifiques pour la section services */
-    @media (max-width: 768px) {
-        #services .grid {
-            gap: 1rem !important;
-        }
-        
-        #services .h-48 {
-            height: 12rem !important;
-        }
-    }
+        @media (max-width: 768px) {
+            #services .grid {
+                gap: 1rem !important;
+            }
 
-    /* Supprimer l'effet hover sur mobile tactile */
-    @media (hover: none) and (pointer: coarse) {
-        #services [class*="hover:scale"]:hover {
-            transform: none !important;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            #services .h-48 {
+                height: 12rem !important;
+            }
         }
-    }
 
-    /* Fallback pour prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-        #services * {
-            transition: none !important;
-            animation: none !important;
+        /* Supprimer l'effet hover sur mobile tactile */
+        @media (hover: none) and (pointer: coarse) {
+            #services [class*="hover:scale"]:hover {
+                transform: none !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+            }
         }
-    }
 
-    /* Animation de chargement des images */
-    .lazy-image {
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-    }
-    
-    .lazy-image.loaded {
-        opacity: 1;
-    }
+        /* Fallback pour prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            #services * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
 
-    /* Performance GPU */
-    .transform-gpu {
-        transform: translateZ(0);
-        backface-visibility: hidden;
-    }
+        /* Animation de chargement des images */
+        .lazy-image {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .lazy-image.loaded {
+            opacity: 1;
+        }
+
+        /* Performance GPU */
+        .transform-gpu {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
     </style>
 
 
     <!-- Schema.org pour le référencement -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-        "@context": "https://schema.org",
-        "@type": "MedicalClinic",
-        "name": "Cabinet Médical Dr. Bouchaib HAMYA",
-        "medicalSpecialty": ["General Medicine", "Ultrasound"],
-        "description": "Cabinet de médecine générale et échographie avec 38 ans d'expérience",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Lotissement Najah, Lot n°16, Immeuble Najah, Appartement 6 2ème étage",
-            "addressLocality": "Inzegane",
-            "addressRegion": "Souss-Massa",
-            "addressCountry": "MA",
-            "postalCode": "80000"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "30.3558",
-            "longitude": "-9.5376"
-        },
-        "telephone": "+212528872513",
-        "email": "docteurhamya@gmail.com",
-        "openingHours": [
-            "Mo-Fr 09:00-18:30",
-            "Sa 09:00-13:00"
-        ],
-        "priceRange": "€€",
-        "image": [
-            "https://docteurhamya.github.io/assets/images/doctor.webp",
-            "https://docteurhamya.github.io/assets/images/cabinet-accueil.webp"
-        ],
-        "url": "https://docteurhamya.github.io",
-        "doctor": {
-            "@type": "Physician",
-            "name": "Dr. Bouchaib HAMYA",
-            "medicalSpecialty": ["General Medicine", "Ultrasound"],
-            "experienceYears": 38,
-            "knowsLanguage": ["fr", "ar"]
+      "@type": "Physician",
+      "@id": "https://docteurhamya.github.io/#dr-bouchaib-hamya",
+      "name": "Dr. Bouchaib HAMYA",
+      "description": "Médecin généraliste avec 38 ans d'expérience, spécialisé en échographie. Cabinet médical à Inzegane près d’Agadir, anciennement à Guelmim.",
+      "url": "https://docteurhamya.github.io",
+      "telephone": "+212528872513",
+      "medicalSpecialty": [
+        "General Medicine",
+        {
+          "@type": "MedicalSpecialty",
+          "name": "Échographie médicale",
+          "code": "ECHO"
         }
+      ],
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://docteurhamya.github.io/assets/images/bureau-docteur-800.webp",
+        "width": "800",
+        "height": "600",
+        "caption": "Bureau du Dr. Bouchaib HAMYA - Cabinet médical à Inzegane"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Inzegane",
+        "addressRegion": "Souss-Massa",
+        "addressCountry": "MA",
+        "streetAddress": "Lotissement Najah, Lot n°16, Immeuble Najah, Appartement 6 2ème étage"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "30.3558",
+        "longitude": "-9.5376"
+      },
+      "openingHours": "Mo-Fr 09:00-18:30, Sa 09:00-13:00",
+      "priceRange": "€€",
+      "experienceYears": 38,
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "French",
+          "alternateName": "fr"
+        },
+        {
+          "@type": "Language",
+          "name": "Arabic",
+          "alternateName": "ar"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "medical_degree",
+          "name": "Diplôme de Médecine"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "specialization",
+          "name": "Spécialisation en Échographie"
+        }
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Ordre des Médecins du Maroc"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://docteurhamya.github.io/#cabinet-medical",
+      "name": "Cabinet Médical Dr. Bouchaib HAMYA",
+      "description": "Cabinet de médecine générale et échographie à Inzegane. Équipement moderne, médecin expert avec 38 ans d'expérience.",
+      "medicalSpecialty": ["General Medicine", "Ultrasound"],
+      "doctor": {
+        "@id": "https://docteurhamya.github.io/#dr-bouchaib-hamya"
+      }
     }
-    </script>
+  ]
+}
+</script>
 
 
 
-    <title>Dr. Bouchaib HAMYA - Médecin Généraliste & Échographie à Inzegane | 38 ans d'expérience</title>
+    <title>Dr. Bouchaib HAMYA - Médecin Généraliste & Échographie à Inzegane près d’Agadir | 38 ans d'expérience</title>
 </head>
 
 <body class="bg-gray-50" itemscope itemtype="https://schema.org/MedicalClinic">
@@ -272,253 +310,221 @@
 
     <!-- Services Section - Optimisé avec 4 services -->
     <section id="services" class="py-16 services-bg" role="region" aria-labelledby="services-title">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 id="services-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
-                Nos Services Médicaux
-            </h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto" aria-hidden="true"></div>
-        </div>
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 id="services-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
+                    Nos Services Médicaux
+                </h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto" aria-hidden="true"></div>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Service 1 - Médecine Générale -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 - Médecine Générale -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
                         transition-all duration-300 ease-out
                         hover:scale-[1.02] hover:shadow-xl 
                         active:scale-100
-                        transform-gpu will-change-transform"
-                 role="article" 
-                 aria-labelledby="service1-title"
-                 itemprop="makesOffer" 
-                 itemscope 
-                 itemtype="https://schema.org/Service">
-                
-                <meta itemprop="serviceType" content="Médecine Générale">
-                
-                <div class="h-48 overflow-hidden relative">
-                    <img data-src="assets/images/coeur.webp"
-                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
-                         srcset="assets/images/coeur-400.webp 400w,
+                        transform-gpu will-change-transform" role="article" aria-labelledby="service1-title"
+                    itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
+
+                    <meta itemprop="serviceType" content="Médecine Générale">
+
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-src="assets/images/coeur.webp"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
+                            srcset="assets/images/coeur-400.webp 400w,
                                  assets/images/coeur-800.webp 800w"
-                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                         alt="Icône représentant la médecine générale - stéthoscope et coeur" 
-                         width="400" 
-                         height="200" 
-                         loading="lazy"
-                         class="lazy-image w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
-                </div>
-                
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-user-md text-blue-600 text-2xl mr-3" 
-                           aria-hidden="true"
-                           itemprop="logo"></i>
-                        <h3 id="service1-title" 
-                            class="text-xl font-bold text-blue-800"
-                            itemprop="name">Médecine Générale</h3>
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            alt="Icône représentant la médecine générale - stéthoscope et coeur" width="400"
+                            height="200" loading="lazy" class="lazy-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        </div>
                     </div>
-                    
-                    <p class="text-gray-700 mb-4" itemprop="description">
-                        Consultations médicales complètes pour toute la famille, diagnostic et traitement des maladies courantes.
-                    </p>
-                    
-                    <ul class="text-gray-600 text-sm space-y-2" 
-                        itemprop="serviceOutput">
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Examens de routine</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Prescriptions médicales</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Suivi maladies chroniques</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Service 2 - Échographie -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden 
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-user-md text-blue-600 text-2xl mr-3" aria-hidden="true"
+                                itemprop="logo"></i>
+                            <h3 id="service1-title" class="text-xl font-bold text-blue-800" itemprop="name">Médecine
+                                Générale</h3>
+                        </div>
+
+                        <p class="text-gray-700 mb-4" itemprop="description">
+                            Consultations médicales complètes pour toute la famille, diagnostic et traitement des
+                            maladies courantes.
+                        </p>
+
+                        <ul class="text-gray-600 text-sm space-y-2" itemprop="serviceOutput">
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Examens de routine</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Prescriptions médicales</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Suivi maladies chroniques</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 2 - Échographie -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
                         transition-all duration-300 ease-out
                         hover:scale-[1.02] hover:shadow-xl 
                         active:scale-100
-                        transform-gpu will-change-transform"
-                 role="article" 
-                 aria-labelledby="service2-title"
-                 itemprop="makesOffer" 
-                 itemscope 
-                 itemtype="https://schema.org/Service">
-                
-                <meta itemprop="serviceType" content="Échographie Médicale">
-                
-                <div class="h-48 overflow-hidden relative">
-                    <img data-src="assets/images/echographie.webp"
-                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
-                         srcset="assets/images/echographie-400.webp 400w,
+                        transform-gpu will-change-transform" role="article" aria-labelledby="service2-title"
+                    itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
+
+                    <meta itemprop="serviceType" content="Échographie Médicale">
+
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-src="assets/images/echographie.webp"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
+                            srcset="assets/images/echographie-400.webp 400w,
                                  assets/images/echographie-800.webp 800w"
-                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                         alt="Équipement d'échographie médicale moderne" 
-                         width="400" 
-                         height="200" 
-                         loading="lazy"
-                         class="lazy-image w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
-                </div>
-                
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-procedures text-blue-600 text-2xl mr-3" 
-                           aria-hidden="true"
-                           itemprop="logo"></i>
-                        <h3 id="service2-title" 
-                            class="text-xl font-bold text-blue-800"
-                            itemprop="name">Échographie</h3>
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            alt="Équipement d'échographie médicale moderne" width="400" height="200" loading="lazy"
+                            class="lazy-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        </div>
                     </div>
-                    
-                    <p class="text-gray-700 mb-4" itemprop="description">
-                        Examens échographiques de haute qualité avec des équipements modernes pour un diagnostic précis.
-                    </p>
-                    
-                    <ul class="text-gray-600 text-sm space-y-2" 
-                        itemprop="serviceOutput">
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Échographie abdominale</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Échographie thyroïdienne</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Échographie gynécologique</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Service 3 - Expertise Médico-Légale -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden 
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-procedures text-blue-600 text-2xl mr-3" aria-hidden="true"
+                                itemprop="logo"></i>
+                            <h3 id="service2-title" class="text-xl font-bold text-blue-800" itemprop="name">Échographie
+                            </h3>
+                        </div>
+
+                        <p class="text-gray-700 mb-4" itemprop="description">
+                            Examens échographiques de haute qualité avec des équipements modernes pour un diagnostic
+                            précis.
+                        </p>
+
+                        <ul class="text-gray-600 text-sm space-y-2" itemprop="serviceOutput">
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Échographie abdominale</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Échographie thyroïdienne</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Échographie gynécologique</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 3 - Expertise Médico-Légale -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
                         transition-all duration-300 ease-out
                         hover:scale-[1.02] hover:shadow-xl 
                         active:scale-100
-                        transform-gpu will-change-transform"
-                 role="article" 
-                 aria-labelledby="service3-title"
-                 itemprop="makesOffer" 
-                 itemscope 
-                 itemtype="https://schema.org/Service">
-                
-                <meta itemprop="serviceType" content="Expertise Médico-Légale">
-                
-                <div class="h-48 overflow-hidden relative">
-                    <img data-src="assets/images/justice.webp"
-                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
-                         srcset="assets/images/justice-400.webp 400w,
+                        transform-gpu will-change-transform" role="article" aria-labelledby="service3-title"
+                    itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
+
+                    <meta itemprop="serviceType" content="Expertise Médico-Légale">
+
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-src="assets/images/justice.webp"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
+                            srcset="assets/images/justice-400.webp 400w,
                                  assets/images/justice-800.webp 800w"
-                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                         alt="Balance de la justice représentant l'expertise médico-légale" 
-                         width="400" 
-                         height="200" 
-                         loading="lazy"
-                         class="lazy-image w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
-                </div>
-                
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-balance-scale text-blue-600 text-2xl mr-3" 
-                           aria-hidden="true"
-                           itemprop="logo"></i>
-                        <h3 id="service3-title" 
-                            class="text-xl font-bold text-blue-800"
-                            itemprop="name">Expertise Médico-Légale</h3>
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            alt="Balance de la justice représentant l'expertise médico-légale" width="400" height="200"
+                            loading="lazy" class="lazy-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        </div>
                     </div>
-                    
-                    <p class="text-gray-700 mb-4" itemprop="description">
-                        En tant que médecin assermenté expert près les tribunaux, je réalise des expertises médicales officielles.
-                    </p>
-                    
-                    <ul class="text-gray-600 text-sm space-y-2" 
-                        itemprop="serviceOutput">
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Évaluations d'incapacité</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Expertises pour assurances</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Service 4 - Premiers Soins -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden 
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-balance-scale text-blue-600 text-2xl mr-3" aria-hidden="true"
+                                itemprop="logo"></i>
+                            <h3 id="service3-title" class="text-xl font-bold text-blue-800" itemprop="name">Expertise
+                                Médico-Légale</h3>
+                        </div>
+
+                        <p class="text-gray-700 mb-4" itemprop="description">
+                            En tant que médecin assermenté expert près les tribunaux, je réalise des expertises
+                            médicales officielles.
+                        </p>
+
+                        <ul class="text-gray-600 text-sm space-y-2" itemprop="serviceOutput">
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Évaluations d'incapacité</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Expertises pour assurances</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Service 4 - Premiers Soins -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
                         transition-all duration-300 ease-out
                         hover:scale-[1.02] hover:shadow-xl 
                         active:scale-100
-                        transform-gpu will-change-transform"
-                 role="article" 
-                 aria-labelledby="service4-title"
-                 itemprop="makesOffer" 
-                 itemscope 
-                 itemtype="https://schema.org/Service">
-                
-                <meta itemprop="serviceType" content="Premiers Soins Médicaux">
-                
-                <div class="h-48 overflow-hidden relative">
-                    <img data-src="assets/images/coeur.webp"
-                         src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
-                         srcset="assets/images/premiers-soins-400.webp 400w,
+                        transform-gpu will-change-transform" role="article" aria-labelledby="service4-title"
+                    itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
+
+                    <meta itemprop="serviceType" content="Premiers Soins Médicaux">
+
+                    <div class="h-48 overflow-hidden relative">
+                        <img data-src="assets/images/coeur.webp"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
+                            srcset="assets/images/premiers-soins-400.webp 400w,
                                  assets/images/premiers-soins-800.webp 800w"
-                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                         alt="Trousse de premiers soins et matériel médical d'urgence" 
-                         width="400" 
-                         height="200" 
-                         loading="lazy"
-                         class="lazy-image w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none"></div>
-                </div>
-                
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-first-aid text-blue-600 text-2xl mr-3" 
-                           aria-hidden="true"
-                           itemprop="logo"></i>
-                        <h3 id="service4-title" 
-                            class="text-xl font-bold text-blue-800"
-                            itemprop="name">Premiers Soins</h3>
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            alt="Trousse de premiers soins et matériel médical d'urgence" width="400" height="200"
+                            loading="lazy" class="lazy-image w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        </div>
                     </div>
-                    
-                    <p class="text-gray-700 mb-4" itemprop="description">
-                        Prise en charge immédiate des urgences médicales mineures et conseils pour les situations d'urgence.
-                    </p>
-                    
-                    <ul class="text-gray-600 text-sm space-y-2" 
-                        itemprop="serviceOutput">
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Soins des plaies et sutures</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Prise en charge des brûlures</span>
-                        </li>
-                        <li class="flex items-center" itemprop="itemListElement">
-                            <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
-                            <span itemprop="name">Conseils en cas d'urgence</span>
-                        </li>
-                    </ul>
+
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-first-aid text-blue-600 text-2xl mr-3" aria-hidden="true"
+                                itemprop="logo"></i>
+                            <h3 id="service4-title" class="text-xl font-bold text-blue-800" itemprop="name">Premiers
+                                Soins</h3>
+                        </div>
+
+                        <p class="text-gray-700 mb-4" itemprop="description">
+                            Prise en charge immédiate des urgences médicales mineures et conseils pour les situations
+                            d'urgence.
+                        </p>
+
+                        <ul class="text-gray-600 text-sm space-y-2" itemprop="serviceOutput">
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Soins des plaies et sutures</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Prise en charge des brûlures</span>
+                            </li>
+                            <li class="flex items-center" itemprop="itemListElement">
+                                <i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i>
+                                <span itemprop="name">Conseils en cas d'urgence</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>        
-    </div>
-</section>
+        </div>
+    </section>
 
     <section id="photos" class="py-16 bg-white scroll-mt-20" aria-labelledby="photos-title">
         <div class="container mx-auto px-4">
@@ -703,7 +709,7 @@
 
         <!-- Microdonnées invisibles pour SEO -->
         <meta itemprop="additionalType" content="https://schema.org/MedicalBusiness">
-        <meta itemprop="url" content="https://votredomaine.com/#apropos">
+        <meta itemprop="url" content="https://docteurhamya.github.io/#apropos">
 
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center">
@@ -893,91 +899,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Microdonnées JSON-LD pour Google (À ajouter avant </body>) -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Physician",
-      "@id": "https://votredomaine.com/#dr-bouchaib-hamya",
-      "name": "Dr. Bouchaib HAMYA",
-      "description": "Médecin généraliste avec 38 ans d'expérience, spécialisé en échographie. Cabinet médical à Inzegane, anciennement à Guelmim. Expert assermenté près les tribunaux.",
-      "url": "https://votredomaine.com",
-      "telephone": "+212528872513",
-      "medicalSpecialty": [
-        "General Medicine",
-        {
-          "@type": "MedicalSpecialty",
-          "name": "Échographie médicale",
-          "code": "ECHO"
-        }
-      ],
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://votredomaine.com/assets/images/bureau-docteur-800.webp",
-        "width": "800",
-        "height": "600",
-        "caption": "Bureau du Dr. Bouchaib HAMYA - Cabinet médical à Inzegane"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Inzegane",
-        "addressRegion": "Souss-Massa",
-        "addressCountry": "MA",
-        "streetAddress": "Lotissement Najah, Lot n°16, Immeuble Najah, Appartement 6 2ème étage"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "30.3558",
-        "longitude": "-9.5376"
-      },
-      "openingHours": "Mo-Fr 09:00-18:30, Sa 09:00-13:00",
-      "priceRange": "€€",
-      "experienceYears": 38,
-      "knowsLanguage": [
-        {
-          "@type": "Language",
-          "name": "French",
-          "alternateName": "fr"
-        },
-        {
-          "@type": "Language",
-          "name": "Arabic",
-          "alternateName": "ar"
-        }
-      ],
-      "hasCredential": [
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "medical_degree",
-          "name": "Diplôme de Médecine"
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "specialization",
-          "name": "Spécialisation en Échographie"
-        }
-      ],
-      "memberOf": {
-        "@type": "Organization",
-        "name": "Ordre des Médecins du Maroc"
-      }
-    },
-    {
-      "@type": "MedicalClinic",
-      "@id": "https://votredomaine.com/#cabinet-medical",
-      "name": "Cabinet Médical Dr. Bouchaib HAMYA",
-      "description": "Cabinet de médecine générale et échographie à Inzegane. Équipement moderne, médecin expert avec 38 ans d'expérience.",
-      "medicalSpecialty": ["General Medicine", "Ultrasound"],
-      "doctor": {
-        "@id": "https://votredomaine.com/#dr-bouchaib-hamya"
-      }
-    }
-  ]
-}
-</script>
 
     <!-- Contact Section - VERSION OPTIMISÉE AVEC GOOGLE MAPS -->
     <!-- Contact Section - VERSION OPTIMISÉE AVEC LEAFLET -->
@@ -1234,136 +1155,136 @@
 
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Lazy loading avancé avec Intersection Observer
-    const lazyImages = document.querySelectorAll('.lazy-image');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    
-                    // Charger l'image
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Lazy loading avancé avec Intersection Observer
+            const lazyImages = document.querySelectorAll('.lazy-image');
+
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+
+                            // Charger l'image
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                            }
+
+                            // Charger srcset si présent
+                            if (img.dataset.srcset) {
+                                img.srcset = img.dataset.srcset;
+                            }
+
+                            // Ajouter la classe loaded
+                            img.classList.add('loaded');
+
+                            // Observer le chargement
+                            img.onload = function () {
+                                img.setAttribute('data-loaded', 'true');
+                            };
+
+                            // Arrêter d'observer
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px',
+                    threshold: 0.1
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback pour les vieux navigateurs
+                lazyImages.forEach(img => {
                     if (img.dataset.src) {
                         img.src = img.dataset.src;
                     }
-                    
-                    // Charger srcset si présent
-                    if (img.dataset.srcset) {
-                        img.srcset = img.dataset.srcset;
-                    }
-                    
-                    // Ajouter la classe loaded
                     img.classList.add('loaded');
-                    
-                    // Observer le chargement
-                    img.onload = function() {
-                        img.setAttribute('data-loaded', 'true');
-                    };
-                    
-                    // Arrêter d'observer
-                    observer.unobserve(img);
+                });
+            }
+
+            // 2. Optimisation des interactions hover sur mobile
+            function isTouchDevice() {
+                return ('ontouchstart' in window) ||
+                    (navigator.maxTouchPoints > 0) ||
+                    (navigator.msMaxTouchPoints > 0);
+            }
+
+            if (isTouchDevice()) {
+                // Désactiver les effets hover problématiques sur mobile
+                const serviceCards = document.querySelectorAll('#services > div > div > div');
+                serviceCards.forEach(card => {
+                    card.classList.remove('hover:scale-[1.02]', 'hover:shadow-xl');
+                    card.classList.add('active:scale-95');
+                });
+            }
+
+            // 3. Ajout de micro-interactions
+            const serviceItems = document.querySelectorAll('#services [role="article"]');
+
+            serviceItems.forEach(item => {
+                // Animation au clic
+                item.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'A' || e.target.closest('a')) return;
+
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+
+                // Focus styles améliorés
+                item.addEventListener('focus', function () {
+                    this.classList.add('ring-2', 'ring-blue-500', 'ring-opacity-50');
+                });
+
+                item.addEventListener('blur', function () {
+                    this.classList.remove('ring-2', 'ring-blue-500', 'ring-opacity-50');
+                });
+            });
+
+            // 4. Performance monitoring
+            let startTime = performance.now();
+
+            window.addEventListener('load', function () {
+                const loadTime = performance.now() - startTime;
+                console.log(`⚡ Section services chargée en ${loadTime.toFixed(2)}ms`);
+
+                // Lazy load Font Awesome si nécessaire
+                const faLink = document.querySelector('link[href*="font-awesome"]');
+                if (faLink && faLink.media === 'print') {
+                    faLink.media = 'all';
                 }
             });
-        }, {
-            rootMargin: '50px 0px',
-            threshold: 0.1
         });
-        
-        lazyImages.forEach(img => imageObserver.observe(img));
-    } else {
-        // Fallback pour les vieux navigateurs
-        lazyImages.forEach(img => {
-            if (img.dataset.src) {
-                img.src = img.dataset.src;
+
+        // 5. Optimisation pour le scrolling
+        let scrollTimeout;
+        window.addEventListener('scroll', function () {
+            clearTimeout(scrollTimeout);
+
+            // Pause le lazy loading pendant le scroll pour plus de fluidité
+
+            scrollTimeout = setTimeout(() => {
+                document.querySelectorAll('.lazy-image:not(.loaded)').forEach(img => {
+                    img.style.opacity = '0';
+                });
+            }, 100);
+        }, { passive: true });
+    </script>
+
+    <!-- NOSCRIPT fallback -->
+    <noscript>
+        <style>
+            .lazy-image {
+                opacity: 1 !important;
             }
-            img.classList.add('loaded');
-        });
-    }
-    
-    // 2. Optimisation des interactions hover sur mobile
-    function isTouchDevice() {
-        return ('ontouchstart' in window) || 
-               (navigator.maxTouchPoints > 0) || 
-               (navigator.msMaxTouchPoints > 0);
-    }
-    
-    if (isTouchDevice()) {
-        // Désactiver les effets hover problématiques sur mobile
-        const serviceCards = document.querySelectorAll('#services > div > div > div');
-        serviceCards.forEach(card => {
-            card.classList.remove('hover:scale-[1.02]', 'hover:shadow-xl');
-            card.classList.add('active:scale-95');
-        });
-    }
-    
-    // 3. Ajout de micro-interactions
-    const serviceItems = document.querySelectorAll('#services [role="article"]');
-    
-    serviceItems.forEach(item => {
-        // Animation au clic
-        item.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' || e.target.closest('a')) return;
-            
-            this.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-        });
-        
-        // Focus styles améliorés
-        item.addEventListener('focus', function() {
-            this.classList.add('ring-2', 'ring-blue-500', 'ring-opacity-50');
-        });
-        
-        item.addEventListener('blur', function() {
-            this.classList.remove('ring-2', 'ring-blue-500', 'ring-opacity-50');
-        });
-    });
-    
-    // 4. Performance monitoring
-    let startTime = performance.now();
-    
-    window.addEventListener('load', function() {
-        const loadTime = performance.now() - startTime;
-        console.log(`⚡ Section services chargée en ${loadTime.toFixed(2)}ms`);
-        
-        // Lazy load Font Awesome si nécessaire
-        const faLink = document.querySelector('link[href*="font-awesome"]');
-        if (faLink && faLink.media === 'print') {
-            faLink.media = 'all';
-        }
-    });
-});
 
-// 5. Optimisation pour le scrolling
-let scrollTimeout;
-window.addEventListener('scroll', function() {
-    clearTimeout(scrollTimeout);
-    
-    // Pause le lazy loading pendant le scroll pour plus de fluidité
-       
-    scrollTimeout = setTimeout(() => {
-        document.querySelectorAll('.lazy-image:not(.loaded)').forEach(img => {
-            img.style.opacity = '0';
-        });
-    }, 100);
-}, { passive: true });
-</script>
-
-<!-- NOSCRIPT fallback -->
-<noscript>
-    <style>
-        .lazy-image {
-            opacity: 1 !important;
-        }
-        
-        .lazy-image:not([src*="data:image/svg"]) {
-            display: block;
-        }
-    </style>
-</noscript>
+            .lazy-image:not([src*="data:image/svg"]) {
+                display: block;
+            }
+        </style>
+    </noscript>
 
     <!-- Script pour Leaflet -->
     <script>
@@ -1841,7 +1762,7 @@ window.addEventListener('scroll', function() {
             "email": "docteurhamya@gmail.com",
             "priceRange": "€€",
             "hasMap": "https://www.google.com/maps?q=30.359826,-9.526296",
-            "image": "https://votredomaine.com/assets/images/bureau-docteur-800.webp"
+            "image": "https://docteurhamya.github.io/assets/images/bureau-docteur-800.webp"
         };
 
         // Injecter les microdonnées
