@@ -125,6 +125,90 @@
             transform: translateZ(0);
             backface-visibility: hidden;
         }
+
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(90deg, #eff6ff 0%, #f0f9ff 100%);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .faq-answer p {
+            line-height: 1.6;
+        }
+
+        mark {
+            animation: highlightFade 1.5s ease;
+        }
+
+        @keyframes highlightFade {
+            0% {
+                background-color: #fef3c7;
+            }
+
+            100% {
+                background-color: #fef9c3;
+            }
+        }
+
+        /* Amélioration de l'accessibilité */
+        .faq-question:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        /* Animation d'entrée */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .faq-item {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        /* Délais d'animation pour chaque élément */
+        .faq-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .faq-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .faq-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .faq-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .faq-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .faq-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
     </style>
 
 
@@ -900,7 +984,453 @@
         </div>
     </section>
 
-    <!-- Contact Section - VERSION OPTIMISÉE AVEC GOOGLE MAPS -->
+    <!-- FAQ Section - Optimisée SEO et UX -->
+    <section id="faq" class="py-16 bg-gradient-to-b from-white to-blue-50 scroll-mt-20">
+        <div class="container mx-auto px-4">
+
+            <!-- En-tête de section -->
+            <div class="text-center mb-12">
+                <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-3">
+                    <i class="fas fa-question-circle mr-2"></i> Questions Fréquentes
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
+                    Questions Fréquentes - Cabinet Dr. HAMYA
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Trouvez rapidement les réponses à vos questions concernant les consultations,
+                    rendez-vous et services du cabinet médical.
+                </p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Grille FAQ -->
+            <div class="max-w-4xl mx-auto">
+
+                <!-- Services & Informations -->
+                <div>
+                    <div class="bg-white rounded-xl shadow-lg p-1">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4 p-4 pb-2 flex items-center">
+                            <i class="fas fa-calendar-check text-blue-600 mr-3"></i>
+                            Services & Informations
+                        </h3>
+
+                        <!-- Question 1 -->
+                        <div class="faq-item group" data-faq-category="rendezvous">
+                            <button
+                                class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Comment prendre rendez-vous avec un médecin généraliste à Inzegane ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <p class="text-gray-700 mb-3">
+                                        Pour prendre rendez-vous avec le <strong>Dr. Bouchaib HAMYA</strong>, vous
+                                        avez plusieurs options :
+                                    </p>
+                                    <ul class="space-y-2 mb-3">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-phone text-green-600 mt-1 mr-2 text-sm"></i>
+                                            <span><strong>Par téléphone</strong> : Appelez le
+                                                <a href="tel:+212528872513"
+                                                    class="text-blue-700 font-semibold hover:text-blue-900">05 28 87
+                                                    25 13</a>
+                                                du lundi au samedi
+                                            </span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-building text-blue-600 mt-1 mr-2 text-sm"></i>
+                                            <span><strong>Sur place</strong> : Pendant les heures d'ouverture du
+                                                cabinet</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-envelope text-amber-600 mt-1 mr-2 text-sm"></i>
+                                            <span><strong>Par email</strong> : Envoyez un message à
+                                                <a href="mailto:docteurhamya@gmail.com"
+                                                    class="text-blue-700 font-semibold hover:text-blue-900">docteurhamya@gmail.com</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <div class="bg-white p-3 rounded border border-blue-200 mt-3">
+                                        <p class="text-sm text-gray-600 flex items-center">
+                                            <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                                            <strong>Conseil</strong> : Pour une prise de rendez-vous rapide,
+                                            privilégiez l'appel téléphonique.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="faq-item group" data-faq-category="rendezvous">
+                            <button
+                                class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Quels sont les horaires de consultation ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                                        <div class="bg-white p-3 rounded border border-green-200">
+                                            <p class="font-semibold text-green-800">Lundi - Vendredi</p>
+                                            <p class="text-gray-700">9h00 - 19h</p>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border border-blue-200">
+                                            <p class="font-semibold text-blue-800">Samedi</p>
+                                            <p class="text-gray-700">9h00 - 13h00</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 mb-2">
+                                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2"></i>
+                                        <strong>Fermé le dimanche.</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item group" data-faq-category="services">
+                            <button
+                                class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Acceptez-vous les nouveaux patients ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <p class="text-gray-700 mb-3">
+                                        <strong class="text-green-700">Oui, absolument !</strong> Le Dr. HAMYA
+                                        accepte tous les nouveaux patients.
+                                    </p>
+                                    <ul class="space-y-2 mb-3">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-users text-blue-500 mt-1 mr-2"></i>
+                                            <span>Patients adultes et enfants</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-home text-green-500 mt-1 mr-2"></i>
+                                            <span>Résidents d'Inzegane et des communes alentour</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                            <span>Transferts d'autres médecins acceptés</span>
+                                        </li>
+                                    </ul>
+                                    <div class="bg-white p-3 rounded border border-green-200">
+                                        <p class="text-sm text-gray-600 flex items-center">
+                                            <i class="fas fa-heart text-red-500 mr-2"></i>
+                                            <strong>Nouveau patient ?</strong> Pensez à apporter vos anciens
+                                            documents médicaux pour le premier rendez-vous.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item group" data-faq-category="services">
+                            <button
+                                class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Comment se préparer à une consultation chez un médecin généraliste à Inzegane ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <div class="mb-4">
+                                        <p class="text-gray-700 mb-3">
+                                            Pour votre consultation chez le médecin généraliste, nous vous
+                                            recommandons de préparer votre dossier médical si vous en avez un, ainsi que
+                                            la liste de vos médicaments actuels. Cela permettra au médecin de mieux
+                                            comprendre votre historique médical et de vous offrir des soins plus
+                                            adaptés.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item group" data-faq-category="services">
+                            <button
+                                class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Quels types de soins médicaux propose un médecin généraliste à Inzegane ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <div class="mb-4">
+                                        <p class="text-gray-700 mb-3">
+                                            En tant que médecin généraliste à Inzegane, nous offrons une large gamme de
+                                            soins médicaux, notamment :
+                                        <ul class="space-y-2 mb-3">
+                                            <li class="flex items-start">
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <span>Diagnostic et traitement des maladies courantes</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <span>Suivi des maladies chroniques (hypertension, diabète, etc.)</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <span>Vaccinations et bilans de santé</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <span>Soins préventifs et conseils en nutrition</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-gray-700 mb-3">
+                                        Si vous avez des besoins spécifiques, n'hésitez pas à nous en parler lors de
+                                        votre consultation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item group" data-faq-category="services">
+                            <button
+                                class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Quels services d'échographie proposez-vous ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <p class="text-gray-700 mb-3">
+                                        Le cabinet est équipé d'un échographe moderne permettant plusieurs types
+                                        d'examens :
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                                        <div class="bg-white p-3 rounded border">
+                                            <p class="font-semibold text-gray-800 mb-1">Échographie Abdominale</p>
+                                            <p class="text-sm text-gray-600">Foie, vésicule, pancréas, rate, reins
+                                            </p>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border">
+                                            <p class="font-semibold text-gray-800 mb-1">Échographie Thyroïdienne</p>
+                                            <p class="text-sm text-gray-600">Glande thyroïde et ganglions</p>
+                                        </div>
+                                        <div class="bg-white p-3 rounded border">
+                                            <p class="font-semibold text-gray-800 mb-1">Échographie
+                                                Musculo-Tendineuse</p>
+                                            <p class="text-sm text-gray-600">Épaules, genoux, tendons</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white p-3 rounded border border-blue-200">
+                                        <p class="text-sm text-gray-600 flex items-center">
+                                            <i class="fas fa-file-medical text-blue-500 mr-2"></i>
+                                            <strong>Important</strong> : Un compte-rendu détaillé est remis
+                                            immédiatement après chaque examen.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item group" data-faq-category="services">
+                            <button
+                                class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Puis-je obtenir une consultation sans rendez-vous avec le médecin généraliste à
+                                        Inzegane ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <div class="mb-4">
+                                        <p class="text-gray-700 mb-3">
+                                            Nous vous conseillons de prendre rendez-vous à l'avance pour garantir une
+                                            consultation dans les délais souhaités. Toutefois, en cas d'urgence, nous
+                                            acceptons les patients sans rendez-vous dans la mesure des disponibilités.
+                                            Nous vous recommandons de nous appeler à l’avance pour vérifier les créneaux
+                                            disponibles. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item group" data-faq-category="rendezvous">
+                            <button
+                                class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Quels sont les tarifs des consultations chez votre médecin généraliste à
+                                        Inzegane ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <p class="text-gray-700 mb-3">
+                                        Les tarifs pour une consultation chez le médecin généraliste à Inzegane varient
+                                        selon le type de service.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item group" data-faq-category="services">
+                            <button
+                                class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
+                                aria-expanded="false" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-gray-800 text-lg">
+                                        Comment consulter les avis des patients sur votre service médical à Inzegane ?
+                                    </span>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
+                                </div>
+                            </button>
+                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                                <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
+                                    <div class="mb-4">
+                                        <p class="text-gray-700 mb-3">
+                                            Vous pouvez consulter les avis des patients sur des plateformes comme
+                                            DabaDoc ou Telecontact, où nous avons plusieurs évaluations.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- CTA pour plus de questions -->
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl p-5 text-center">
+                        <i class="fas fa-comments text-3xl mb-3 opacity-80"></i>
+                        <h4 class="font-bold text-lg mb-2">Une autre question ?</h4>
+                        <p class="text-blue-100 mb-4 text-sm">
+                            Nous sommes là pour vous répondre rapidement.
+                        </p>
+                        <a href="tel:+212528872513"
+                            class="inline-flex items-center bg-white text-blue-800 font-semibold py-2 px-5 rounded-lg hover:bg-blue-100 transition-colors">
+                            <i class="fas fa-phone mr-2"></i>
+                            Appelez-nous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Microdonnées Schema.org pour FAQ -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Comment prendre rendez-vous avec le Dr. Bouchaib HAMYA ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pour prendre rendez-vous avec le Dr. Bouchaib HAMYA, vous pouvez appeler le cabinet au 05 28 87 25 13 du lundi au samedi, vous présenter sur place pendant les heures d'ouverture, ou envoyer un email à docteurhamya@gmail.com. Le cabinet est situé à Inzegane, en face de Marjane."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les horaires de consultation du cabinet médical ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le cabinet est ouvert du lundi au vendredi de 9h00 à 18h30 et le samedi de 9h00 à 13h00. Il est fermé le dimanche et les jours fériés. Pour les urgences en dehors des horaires, contactez le 15 (SAMU)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels services d'échographie sont proposés au cabinet ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le cabinet propose plusieurs types d'échographies : échographie abdominale (foie, vésicule, pancréas), échographie pelvienne, échographie thyroïdienne et échographie musculo-tendineuse. Un compte-rendu détaillé est remis immédiatement après chaque examen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le Dr. HAMYA accepte-t-il les nouveaux patients ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, le Dr. Bouchaib HAMYA accepte tous les nouveaux patients, adultes comme enfants. Les résidents d'Inzegane et des communes alentour sont les bienvenus, ainsi que les transferts d'autres médecins. Pensez à apporter vos anciens documents médicaux pour le premier rendez-vous."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que faire en cas d'urgence médicale ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En cas d'urgence vitale, appelez immédiatement le 15 (SAMU) ou le 19 (Police Secours). Pour les urgences non-vitales pendant les heures d'ouverture, appelez le cabinet au 05 28 87 25 13 ou présentez-vous directement. Le cabinet assure les premiers soins pour les urgences mineures."
+      }
+    }
+  ]
+}
+</script>
+
+    <script>
+        // Fonction pour ouvrir/fermer une question FAQ
+        function toggleFaq(button) {
+            const faqItem = button.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = button.querySelector('.fa-chevron-down');
+
+            // Fermer toutes les autres FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer && item.style.maxHeight !== '0px') {
+                    item.style.maxHeight = '0px';
+                    const otherIcon = item.closest('.faq-item').querySelector('.fa-chevron-down');
+                    if (otherIcon) {
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+
+            // Basculer l'état actuel
+            if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+                answer.style.maxHeight = '0px';
+                icon.style.transform = 'rotate(0deg)';
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+                button.setAttribute('aria-expanded', 'true');
+
+                // Analytics (optionnel)
+                const question = button.querySelector('.font-semibold').textContent;
+                console.log('FAQ ouverte:', question.trim());
+            }
+        }
+
+    </script>
+
     <!-- Contact Section - VERSION OPTIMISÉE AVEC LEAFLET -->
     <section id="contact" class="py-16 bg-white scroll-mt-20" itemscope itemtype="https://schema.org/MedicalClinic"
         aria-labelledby="contact-title">
