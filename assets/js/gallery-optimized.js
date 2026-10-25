@@ -10,38 +10,38 @@ class PhotoGallery {
             {
                 src: 'assets/images/cabinet-accueil.webp',
                 srcset: 'assets/images/cabinet-accueil-400.webp 400w, assets/images/cabinet-accueil-800.webp 800w, assets/images/cabinet-accueil-1200.webp 1200w',
-                alt: 'Salle d\'attente moderne du cabinet médical Dr. HAMYA à Inzegane, avec sièges confortables et décoration apaisante',
-                title: 'Accueil - Salle d\'attente'
+                alt: 'Accueil du cabinet : bureau d\'accueil et sièges d\'attente',
+                title: 'Accueil'
             },
             {
                 src: 'assets/images/cabinet-bureau.webp',
                 srcset: 'assets/images/cabinet-bureau-400.webp 400w, assets/images/cabinet-bureau-800.webp 800w',
-                alt: 'Bureau professionnel du Dr. HAMYA avec équipement informatique, documentation médicale et espace d\'accueil patient',
+                alt: 'Bureau de consultation du Dr. HAMYA',
                 title: 'Bureau de consultation'
             },
             {
                 src: 'assets/images/cabinet-echographie.webp',
                 srcset: 'assets/images/cabinet-echographie-400.webp 400w, assets/images/cabinet-echographie-800.webp 800w',
-                alt: 'Salle d\'échographie équipée d\'un appareil à ultrasons moderne pour diagnostics précis au cabinet du Dr. HAMYA',
+                alt: 'Salle d\'échographie avec table d\'examen et échographe',
                 title: 'Salle d\'échographie'
             },
             {
                 src: 'assets/images/cabinet-equipement.webp',
                 srcset: 'assets/images/cabinet-equipement-400.webp 400w, assets/images/cabinet-equipement-800.webp 800w',
-                alt: 'Équipement médical moderne et instruments stériles disponibles au cabinet du Dr. HAMYA à Inzegane',
+                alt: 'Échographe du cabinet',
                 title: 'Équipement médical'
             },
             {
                 src: 'assets/images/cabinet-premiers-soins.webp',
                 srcset: 'assets/images/cabinet-premiers-soins-400.webp 400w, assets/images/cabinet-premiers-soins-800.webp 800w',
-                alt: 'Zone de premiers soins équipée avec matériel stérile pour interventions médicales urgentes au cabinet Dr. HAMYA',
-                title: 'Premiers Soins'
+                alt: 'Armoire de matériel de premiers soins',
+                title: 'Premiers soins'
             },
             {
                 src: 'assets/images/cabinet-salle-attente.webp',
                 srcset: 'assets/images/cabinet-salle-attente-400.webp 400w, assets/images/cabinet-salle-attente-800.webp 800w',
-                alt: 'Salle d\'attente spacieuse et lumineuse du cabinet médical Dr. HAMYA à Inzegane, avec vue sur Marjane',
-                title: 'Salle d\'attente principale'
+                alt: 'Salle d\'attente du cabinet',
+                title: 'Salle d\'attente'
             }
         ];
         
