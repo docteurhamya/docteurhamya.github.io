@@ -51,6 +51,19 @@
     const DIRECTIONS_TARGET = { lat: 30.359826373778983, lng: -9.526295729030254 }; // destination de l'itinéraire
 
     /* ======================================================================
+       0. Années d'expérience calculées automatiquement
+          <span data-years-since="1987">39</span> : le chiffre écrit dans le HTML sert
+          sans JavaScript et pour les moteurs de recherche ; il est recalculé ici chaque année.
+       ====================================================================== */
+    function initYears() {
+        const year = new Date().getFullYear();
+        document.querySelectorAll('[data-years-since]').forEach((el) => {
+            const start = parseInt(el.dataset.yearsSince, 10);
+            if (start && year > start) el.textContent = String(year - start);
+        });
+    }
+
+    /* ======================================================================
        1. Menu mobile et défilement vers les sections
        ====================================================================== */
     function initNavigation() {
@@ -393,6 +406,7 @@
     }
 
     /* ====================================================================== */
+    initYears();
     initNavigation();
     initFaq();
     initGallery();
