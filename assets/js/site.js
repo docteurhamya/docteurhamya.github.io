@@ -114,6 +114,7 @@
             return {
                 src: img.getAttribute('src'),
                 srcset: img.getAttribute('srcset'),
+                full: img.dataset.full || null,
                 alt: img.getAttribute('alt') || '',
                 title: caption ? caption.textContent.trim() : (img.getAttribute('alt') || '')
             };
@@ -128,14 +129,15 @@
 
         function render() {
             const photo = photos[current];
-            if (photo.srcset) {
-                modalImage.srcset = photo.srcset;
+            const srcset = photo.full ? (photo.srcset ? photo.srcset + ', ' : '') + photo.full + ' 1200w' : photo.srcset;
+            if (srcset) {
+                modalImage.srcset = srcset;
                 modalImage.sizes = '(max-width: 768px) 100vw, 80vw';
             } else {
                 modalImage.removeAttribute('srcset');
                 modalImage.removeAttribute('sizes');
             }
-            modalImage.src = photo.src;
+            modalImage.src = photo.full || photo.src;
             modalImage.alt = photo.alt;
             modalCaption.textContent = photo.title;
         }
@@ -206,6 +208,28 @@
         const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
         return (R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))).toFixed(1);
+    }
+
+    // Leaflet (≈ 150 Ko) n'est téléchargé que lorsque la carte approche de l'écran
+    const LEAFLET_JS = {
+        src: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+        integrity: 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
+    };
+
+    function loadLeaflet() {
+        return new Promise((resolve, reject) => {
+            if (typeof window.L !== 'undefined') {
+                resolve();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = LEAFLET_JS.src;
+            script.integrity = LEAFLET_JS.integrity;
+            script.crossOrigin = 'anonymous';
+            script.onload = () => (typeof window.L !== 'undefined' ? resolve() : reject(new Error('Leaflet indisponible')));
+            script.onerror = () => reject(new Error('Leaflet indisponible'));
+            document.head.appendChild(script);
+        });
     }
 
     function initMap() {
@@ -322,21 +346,21 @@
             }
         });
 
-        if (!container) return;
-        if (typeof L === 'undefined') {
-            showFallback();
-            return;
+        function start() {
+            loadLeaflet().then(createMap).catch(showFallback);
         }
+
+        if (!container) return;
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 if (entries.some((entry) => entry.isIntersecting)) {
                     observer.disconnect();
-                    createMap();
+                    start();
                 }
-            }, { rootMargin: '100px', threshold: 0.1 });
+            }, { rootMargin: '200px 0px', threshold: 0 });
             observer.observe(container);
         } else {
-            createMap();
+            start();
         }
     }
 

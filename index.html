@@ -36,6 +36,9 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Police Montserrat téléchargée en priorité (évite le changement de police visible) -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2" as="font" type="font/woff2" crossorigin>
+
     <!-- Feuilles de style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -48,8 +51,6 @@
     </noscript>
 
     <!-- Scripts (exécutés une fois la page analysée) -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
     <script src="assets/js/site.js" defer></script>
 
     <!-- Icônes -->
@@ -58,6 +59,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
+    <meta name="theme-color" content="#1e40af">
 
     <!-- Données structurées pour les moteurs de recherche -->
     <script type="application/ld+json">
@@ -243,7 +245,7 @@
                 <div
                     class="relative w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden border-4 border-white shadow-xl floating">
                     <img src="assets/images/doctor.webp" alt="Dr. Bouchaib HAMYA, médecin généraliste à Inzegane"
-                        width="400" height="400" loading="eager" class="w-full h-full object-cover">
+                        width="400" height="400" loading="eager" fetchpriority="high" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -479,9 +481,9 @@
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="0" role="button" tabindex="0" aria-label="Agrandir la photo : Accueil">
                         <div class="photo-thumb">
-                            <img src="assets/images/cabinet-accueil.webp" srcset="assets/images/cabinet-accueil-400.webp 400w,
-                                    assets/images/cabinet-accueil-800.webp 800w,
-                                    assets/images/cabinet-accueil-1200.webp 1200w"
+                            <img src="assets/images/cabinet-accueil-800.webp" data-full="assets/images/cabinet-accueil-1200.webp"
+                                srcset="assets/images/cabinet-accueil-400.webp 400w,
+                                    assets/images/cabinet-accueil-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Accueil du cabinet : bureau d'accueil et sièges d'attente"
                                 width="800" height="600" loading="lazy" decoding="async"
@@ -500,7 +502,8 @@
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="1" role="button" tabindex="0" aria-label="Agrandir la photo : Bureau de consultation">
                         <div class="photo-thumb">
-                            <img src="assets/images/cabinet-bureau.webp" srcset="assets/images/cabinet-bureau-400.webp 400w,
+                            <img src="assets/images/cabinet-bureau-800.webp" data-full="assets/images/cabinet-bureau-1200.webp"
+                                srcset="assets/images/cabinet-bureau-400.webp 400w,
                                     assets/images/cabinet-bureau-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Bureau de consultation du Dr. HAMYA"
@@ -520,7 +523,8 @@
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="2" role="button" tabindex="0" aria-label="Agrandir la photo : Salle d'échographie">
                         <div class="photo-thumb">
-                            <img src="assets/images/cabinet-echographie.webp" srcset="assets/images/cabinet-echographie-400.webp 400w,
+                            <img src="assets/images/cabinet-echographie-800.webp" data-full="assets/images/cabinet-echographie-1200.webp"
+                                srcset="assets/images/cabinet-echographie-400.webp 400w,
                                     assets/images/cabinet-echographie-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Salle d'échographie avec table d'examen et échographe"
@@ -540,7 +544,8 @@
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="3" role="button" tabindex="0" aria-label="Agrandir la photo : Équipement médical">
                         <div class="photo-thumb">
-                            <img src="assets/images/cabinet-equipement.webp" srcset="assets/images/cabinet-equipement-400.webp 400w,
+                            <img src="assets/images/cabinet-equipement-800.webp" data-full="assets/images/cabinet-equipement-1200.webp"
+                                srcset="assets/images/cabinet-equipement-400.webp 400w,
                                     assets/images/cabinet-equipement-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Échographe du cabinet"
@@ -561,7 +566,8 @@
                         data-index="4" role="button" tabindex="0"
                         aria-label="Agrandir la photo : Premiers soins">
                         <div class="photo-thumb">
-                            <img src="assets/images/cabinet-premiers-soins.webp" srcset="assets/images/cabinet-premiers-soins-400.webp 400w,
+                            <img src="assets/images/cabinet-premiers-soins-800.webp" data-full="assets/images/cabinet-premiers-soins-1200.webp"
+                                srcset="assets/images/cabinet-premiers-soins-400.webp 400w,
                                     assets/images/cabinet-premiers-soins-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Armoire de matériel de premiers soins"
@@ -582,7 +588,8 @@
                         data-index="5" role="button" tabindex="0"
                         aria-label="Agrandir la photo : Salle d'attente">
                         <div class="photo-thumb">
-                            <img src="assets/images/cabinet-salle-attente.webp" srcset="assets/images/cabinet-salle-attente-400.webp 400w,
+                            <img src="assets/images/cabinet-salle-attente-800.webp" data-full="assets/images/cabinet-salle-attente-1200.webp"
+                                srcset="assets/images/cabinet-salle-attente-400.webp 400w,
                                     assets/images/cabinet-salle-attente-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Salle d'attente du cabinet"
@@ -648,25 +655,15 @@
                 <!-- Image OPTIMISÉE avec bureau-docteur.webp -->
                 <div class="w-full md:w-1/2 mb-10 md:mb-0 md:pr-10">
 
-                    <picture>
-                        <!-- Version WebP moderne -->
-                        <source srcset="assets/images/bureau-docteur-400.webp 400w,
-                                assets/images/bureau-docteur-800.webp 800w,
-                                assets/images/bureau-docteur-1200.webp 1200w" type="image/webp" width="800" height="1067"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px">
-
-                        <!-- Fallback JPG pour compatibilité -->
-                        <source srcset="assets/images/bureau-docteur-400.jpg 400w,
-                                assets/images/bureau-docteur-800.jpg 800w" type="image/jpeg"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px">
-
-                        <!-- Image principale avec tous les attributs SEO -->
-                        <img src="assets/images/bureau-docteur-800.webp"
-                            alt="Le Dr. Bouchaib HAMYA à son bureau, au cabinet d'Inzegane"
-                            width="800" height="1067" loading="lazy" decoding="async"
-                            class="rounded-lg shadow-xl w-full h-auto object-cover transition-opacity duration-300"
-                            style="background-color: #f3f4f6">
-                    </picture>
+                    <img src="assets/images/bureau-docteur-800.webp"
+                        srcset="assets/images/bureau-docteur-400.webp 400w,
+                            assets/images/bureau-docteur-800.webp 800w,
+                            assets/images/bureau-docteur-1200.webp 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                        alt="Le Dr. Bouchaib HAMYA à son bureau, au cabinet d'Inzegane"
+                        width="800" height="1067" loading="lazy" decoding="async"
+                        class="rounded-lg shadow-xl w-full h-auto object-cover"
+                        style="background-color: #f3f4f6">
                 </div>
 
                 <!-- Contenu texte OPTIMISÉ -->

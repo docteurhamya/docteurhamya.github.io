@@ -20,16 +20,27 @@ body {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('../images/bloc.webp');
+    background: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('../images/bloc-800.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .services-bg {
-    background: linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),url('../images/medecin.webp');
+    background: linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),url('../images/medecin-800.webp');
     background-size: cover;
     background-position: center;
+}
+
+/* Fonds : version légère sur mobile, version détaillée sur tablette et ordinateur */
+@media (min-width: 768px) {
+    .hero {
+        background-image: linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('../images/bloc-1600.webp');
+    }
+
+    .services-bg {
+        background-image: linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,.9)),url('../images/medecin-1600.webp');
+    }
 }
 
 .floating {
