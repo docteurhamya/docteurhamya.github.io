@@ -21,11 +21,27 @@
             geoUnsupported: "La géolocalisation n'est pas supportée par votre navigateur.",
             geoError: 'Impossible de déterminer votre position.',
             mapUnavailable: 'Carte non disponible',
-            openGoogleMaps: 'Ouvrir Google Maps'
+            openGoogleMaps: 'Ouvrir Google Maps',
+            km: 'km'
+        },
+        ar: {
+            doctor: "الدكتور بوشعيب حامية",
+            office: "عيادة طبية",
+            landmark: "إنزكان (قبالة مرجان)",
+            call: "اتصل",
+            directions: "التوجه للعيادة",
+            youAreHere: "أنتم هنا",
+            distance: "المسافة إلى العيادة:",
+            km: "كلم",
+            geoUnsupported: "متصفحكم لا يدعم خدمة تحديد الموقع.",
+            geoError: "تعذّر تحديد موقعكم.",
+            mapUnavailable: "الخريطة غير متاحة",
+            openGoogleMaps: "فتح Google Maps"
         }
     };
     const LANG = (document.documentElement.lang || 'fr').slice(0, 2);
     const T = TEXTS[LANG] || TEXTS.fr;
+    const RTL = document.documentElement.dir === 'rtl';
 
     /* ----------------------------------------------------------------------
        Cabinet : téléphone et coordonnées (valeurs reprises telles quelles).
@@ -198,8 +214,8 @@
                 return;
             }
             if (event.key === 'Escape') close();
-            else if (event.key === 'ArrowLeft') step(-1);
-            else if (event.key === 'ArrowRight') step(1);
+            else if (event.key === 'ArrowLeft') step(RTL ? 1 : -1);   // en arabe, la flèche gauche avance
+            else if (event.key === 'ArrowRight') step(RTL ? -1 : 1);
         });
     }
 
@@ -286,7 +302,7 @@
             });
 
             const popup =
-                '<div class="map-popup">' +
+                '<div class="map-popup" dir="' + (RTL ? 'rtl' : 'ltr') + '">' +
                 '<h3>' + T.doctor + '</h3>' +
                 '<p class="map-popup-office"><i class="fas fa-map-marker-alt"></i>' + T.office + '</p>' +
                 '<p class="map-popup-landmark">' + T.landmark + '</p>' +
@@ -339,8 +355,8 @@
                 setTimeout(() => map.removeLayer(line), 10000);
 
                 const km = distanceKm(lat, lng, DIRECTIONS_TARGET.lat, DIRECTIONS_TARGET.lng);
-                userMarker.bindPopup('<div class="map-popup map-popup-small"><strong>' + T.youAreHere +
-                    '</strong><br>' + T.distance + ' ' + km + ' km</div>').openPopup();
+                userMarker.bindPopup('<div class="map-popup map-popup-small" dir="' + (RTL ? 'rtl' : 'ltr') + '"><strong>' + T.youAreHere +
+                    '</strong><br>' + T.distance + ' ' + km + ' ' + T.km + '</div>').openPopup();
             }, () => {
                 alert(T.geoError);
             }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });

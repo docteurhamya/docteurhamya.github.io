@@ -490,3 +490,112 @@ button:focus {
 [tabindex="-1"]:focus {
     outline: none;
 }
+
+/* 6. Sélecteur de langue (FR / AR) */
+.lang-switch {
+    margin-inline: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid #bfdbfe;
+    border-radius: 9999px;
+    color: #1e40af;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+}
+
+.lang-switch:hover {
+    background: #eff6ff;
+}
+
+@media (min-width: 768px) {
+    .lang-switch {
+        margin-inline: 2rem 0;
+        padding: 0.25rem 0.75rem;
+    }
+}
+
+/* 7. Page arabe : police arabe et sens de lecture de droite à gauche */
+html[lang="ar"] body,
+html[lang="ar"] .leaflet-container,
+html[lang="ar"] .map-popup,
+:not(html)[lang="ar"] {
+    font-family: 'Noto Sans Arabic', 'Montserrat', system-ui, sans-serif;
+}
+
+[dir="rtl"] [class*="space-x-"] > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .skip-link {
+    left: auto;
+    right: -9999px;
+    border-radius: 0 0 0 0.5rem;
+}
+
+[dir="rtl"] .skip-link:focus {
+    right: 0;
+}
+
+/* Classes Tailwind orientées gauche/droite, inversées en arabe (hors carte, qui reste de gauche à droite) */
+[dir="rtl"] .border-l-4:not([dir="ltr"] *) {
+    border-left-width: 0;
+    border-right-width: 4px;
+}
+
+[dir="rtl"] .left-4:not([dir="ltr"] *) {
+    left: auto;
+    right: 1rem;
+}
+
+[dir="rtl"] .mr-2:not([dir="ltr"] *) {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+[dir="rtl"] .mr-3:not([dir="ltr"] *) {
+    margin-right: 0;
+    margin-left: 0.75rem;
+}
+
+[dir="rtl"] .mr-4:not([dir="ltr"] *) {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+[dir="rtl"] .right-0:not([dir="ltr"] *) {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .right-4:not([dir="ltr"] *) {
+    right: auto;
+    left: 1rem;
+}
+
+[dir="rtl"] .rounded-r-lg:not([dir="ltr"] *) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+[dir="rtl"] .text-left:not([dir="ltr"] *) {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    [dir="rtl"] .md\:pl-8:not([dir="ltr"] *) {
+        padding-left: 0;
+        padding-right: 2rem;
+    }
+
+    [dir="rtl"] .md\:pr-10:not([dir="ltr"] *) {
+        padding-right: 0;
+        padding-left: 2.5rem;
+    }
+
+    [dir="rtl"] .md\:text-right:not([dir="ltr"] *) {
+        text-align: left;
+    }
+}
