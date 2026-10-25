@@ -8,17 +8,19 @@
     <meta name="robots" content="index, follow">
     <meta name="description"
         content="Cabinet du Dr. Bouchaib HAMYA, médecin généraliste à Inzegane, près d’Agadir : médecine générale, échographie, premiers soins et expertises médico-légales. Avec ou sans rendez-vous.">
-    <meta name="keywords"
-        content="médecin généraliste Inzegane, échographie Inzegane, Dr. Bouchaib HAMYA, cabinet médical Inzegane, expertise médico-légale, premiers soins, médecin expert tribunal">
     <meta name="author" content="Cabinet Médical Dr. Bouchaib HAMYA">
 
     <!-- Open Graph pour les réseaux sociaux -->
     <meta property="og:title"
-        content="Cabinet Médical Dr. Bouchaib HAMYA - Médecine Générale & Échographie à Inzegane près d’Agadir">
+        content="Cabinet Médical Dr. Bouchaib HAMYA - Médecine Générale &amp; Échographie à Inzegane près d’Agadir">
     <meta property="og:description"
         content="Cabinet du Dr. Bouchaib HAMYA, médecin généraliste à Inzegane, près d’Agadir : médecine générale, échographie, premiers soins et expertises médico-légales. Avec ou sans rendez-vous.">
-    <meta property="og:image" content="https://docteurhamya.github.io/assets/images/doctor.webp">
-    <meta property="og:url" content="https://docteurhamya.github.io">
+    <meta property="og:image" content="https://docteurhamya.github.io/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Le Dr. Bouchaib HAMYA à son bureau, au cabinet d'Inzegane">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://docteurhamya.github.io/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
 
@@ -29,6 +31,7 @@
     <meta name="ICBM" content="30.3558, -9.5376">
 
     <title>Dr. Bouchaib HAMYA – Médecin généraliste et échographie à Inzegane, près d’Agadir</title>
+    <link rel="canonical" href="https://docteurhamya.github.io/">
 
     <!-- Connexions anticipées vers les serveurs externes -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -48,6 +51,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Sans JavaScript : pas de message « Chargement de la carte » ni de boutons inutiles -->
+        <style>#map-placeholder, #leaflet-map-container [data-action] { display: none; }</style>
     </noscript>
 
     <!-- Scripts (exécutés une fois la page analysée) -->
@@ -188,8 +193,9 @@
 </head>
 
 <body class="bg-gray-50">
+    <a href="#contenu" class="skip-link">Aller au contenu principal</a>
     <!-- Header optimisé -->
-    <header class="fixed w-full bg-white shadow-md z-50" role="banner">
+    <header class="fixed w-full bg-white shadow-md z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <i class="fas fa-stethoscope text-blue-600 text-3xl mr-3" aria-hidden="true"></i>
@@ -205,7 +211,7 @@
                 </svg>
             </button>
 
-            <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Menu principal">
+            <nav class="hidden md:flex space-x-8" aria-label="Menu principal">
                 <a href="#accueil" class="text-blue-800 font-medium hover:text-blue-600 transition">Accueil</a>
                 <a href="#services" class="text-blue-800 font-medium hover:text-blue-600 transition">Services</a>
                 <a href="#photos" class="text-blue-800 font-medium hover:text-blue-600 transition">Cabinet</a>
@@ -215,29 +221,30 @@
         </div>
 
         <!-- Menu mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg" role="navigation"
-            aria-label="Menu mobile">
+        <nav id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg" aria-label="Menu mobile">
             <a href="#accueil" class="block py-2 text-blue-800 font-medium">Accueil</a>
             <a href="#services" class="block py-2 text-blue-800 font-medium">Services</a>
             <a href="#photos" class="block py-2 text-blue-800 font-medium">Cabinet</a>
             <a href="#apropos" class="block py-2 text-blue-800 font-medium">À Propos</a>
             <a href="#contact" class="block py-2 text-blue-800 font-medium">Contact</a>
-        </div>
+        </nav>
     </header>
 
+    <main id="contenu">
+
     <!-- Hero Section avec images optimisées -->
-    <section id="accueil" class="hero pt-24 pb-16 md:pt-32 md:pb-24 text-white" role="region"
+    <section id="accueil" class="hero pt-24 pb-16 md:pt-32 md:pb-24 text-white"
         aria-labelledby="hero-title">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
                 <h1 id="hero-title" class="text-4xl md:text-5xl font-bold mb-4">Dr. Bouchaib HAMYA</h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6">Médecine Générale & Échographie</h2>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">Médecine Générale &amp; Échographie</h2>
                 <p class="text-lg mb-8">Médecin depuis plus de 38 ans, anciennement installé à Guelmim, aujourd'hui à Inzegane.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="tel:+212528872513"
                         class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-6 rounded-lg text-center transition appointment-btn"
                         aria-label="Appeler le cabinet">
-                        <i class="fas fa-phone mr-2" aria-hidden="true"></i> Appeler 05 28 87 25 13
+                        <i class="fas fa-phone mr-2" aria-hidden="true"></i> Appeler 05&nbsp;28&nbsp;87&nbsp;25&nbsp;13
                     </a>
                 </div>
             </div>
@@ -281,7 +288,7 @@
     </div>
 
     <!-- Services Section - Optimisé avec 4 services -->
-    <section id="services" class="py-16 services-bg" role="region" aria-labelledby="services-title">
+    <section id="services" class="py-16 services-bg" aria-labelledby="services-title">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 id="services-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
@@ -478,9 +485,9 @@
             <div class="mb-12" role="region" aria-label="Galerie photos du cabinet">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     <!-- Photo 1 - Accueil OPTIMISÉE -->
-                    <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
-                        data-index="0" role="button" tabindex="0" aria-label="Agrandir la photo : Accueil">
-                        <div class="photo-thumb">
+                    <button type="button" class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item block w-full text-left"
+                        data-index="0" aria-label="Agrandir la photo : Accueil">
+                        <span class="photo-thumb block">
                             <img src="assets/images/cabinet-accueil-800.webp" data-full="assets/images/cabinet-accueil-1200.webp"
                                 srcset="assets/images/cabinet-accueil-400.webp 400w,
                                     assets/images/cabinet-accueil-800.webp 800w"
@@ -488,20 +495,19 @@
                                 alt="Accueil du cabinet : bureau d'accueil et sièges d'attente"
                                 width="800" height="600" loading="lazy" decoding="async"
                                 class="photo-img w-full h-full object-cover">
-                        </div>
-                        <div
-                            class="photo-overlay absolute inset-0 flex items-end p-4">
-                            <div class="text-white">
+                        </span>
+                        <span class="photo-overlay absolute inset-0 flex items-end p-4">
+                            <span class="block text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
-                                <p class="font-semibold text-sm sm:text-base">Accueil</p>
-                            </div>
-                        </div>
-                    </article>
+                                <span class="photo-caption block font-semibold text-sm sm:text-base">Accueil</span>
+                            </span>
+                        </span>
+                    </button>
 
                     <!-- Photo 2 - Bureau OPTIMISÉE -->
-                    <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
-                        data-index="1" role="button" tabindex="0" aria-label="Agrandir la photo : Bureau de consultation">
-                        <div class="photo-thumb">
+                    <button type="button" class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item block w-full text-left"
+                        data-index="1" aria-label="Agrandir la photo : Bureau de consultation">
+                        <span class="photo-thumb block">
                             <img src="assets/images/cabinet-bureau-800.webp" data-full="assets/images/cabinet-bureau-1200.webp"
                                 srcset="assets/images/cabinet-bureau-400.webp 400w,
                                     assets/images/cabinet-bureau-800.webp 800w"
@@ -509,20 +515,19 @@
                                 alt="Bureau de consultation du Dr. HAMYA"
                                 width="800" height="600" loading="lazy" decoding="async"
                                 class="photo-img w-full h-full object-cover">
-                        </div>
-                        <div
-                            class="photo-overlay absolute inset-0 flex items-end p-4">
-                            <div class="text-white">
+                        </span>
+                        <span class="photo-overlay absolute inset-0 flex items-end p-4">
+                            <span class="block text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
-                                <p class="font-semibold text-sm sm:text-base">Bureau de consultation</p>
-                            </div>
-                        </div>
-                    </article>
+                                <span class="photo-caption block font-semibold text-sm sm:text-base">Bureau de consultation</span>
+                            </span>
+                        </span>
+                    </button>
 
                     <!-- Photo 3 - Échographie OPTIMISÉE -->
-                    <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
-                        data-index="2" role="button" tabindex="0" aria-label="Agrandir la photo : Salle d'échographie">
-                        <div class="photo-thumb">
+                    <button type="button" class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item block w-full text-left"
+                        data-index="2" aria-label="Agrandir la photo : Salle d'échographie">
+                        <span class="photo-thumb block">
                             <img src="assets/images/cabinet-echographie-800.webp" data-full="assets/images/cabinet-echographie-1200.webp"
                                 srcset="assets/images/cabinet-echographie-400.webp 400w,
                                     assets/images/cabinet-echographie-800.webp 800w"
@@ -530,20 +535,19 @@
                                 alt="Salle d'échographie avec table d'examen et échographe"
                                 width="800" height="600" loading="lazy" decoding="async"
                                 class="photo-img w-full h-full object-cover">
-                        </div>
-                        <div
-                            class="photo-overlay absolute inset-0 flex items-end p-4">
-                            <div class="text-white">
+                        </span>
+                        <span class="photo-overlay absolute inset-0 flex items-end p-4">
+                            <span class="block text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
-                                <p class="font-semibold text-sm sm:text-base">Salle d'échographie</p>
-                            </div>
-                        </div>
-                    </article>
+                                <span class="photo-caption block font-semibold text-sm sm:text-base">Salle d'échographie</span>
+                            </span>
+                        </span>
+                    </button>
 
                     <!-- Photo 4 - Équipement OPTIMISÉE -->
-                    <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
-                        data-index="3" role="button" tabindex="0" aria-label="Agrandir la photo : Équipement médical">
-                        <div class="photo-thumb">
+                    <button type="button" class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item block w-full text-left"
+                        data-index="3" aria-label="Agrandir la photo : Équipement médical">
+                        <span class="photo-thumb block">
                             <img src="assets/images/cabinet-equipement-800.webp" data-full="assets/images/cabinet-equipement-1200.webp"
                                 srcset="assets/images/cabinet-equipement-400.webp 400w,
                                     assets/images/cabinet-equipement-800.webp 800w"
@@ -551,21 +555,19 @@
                                 alt="Échographe du cabinet"
                                 width="800" height="600" loading="lazy" decoding="async"
                                 class="photo-img w-full h-full object-cover">
-                        </div>
-                        <div
-                            class="photo-overlay absolute inset-0 flex items-end p-4">
-                            <div class="text-white">
+                        </span>
+                        <span class="photo-overlay absolute inset-0 flex items-end p-4">
+                            <span class="block text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
-                                <p class="font-semibold text-sm sm:text-base">Équipement médical</p>
-                            </div>
-                        </div>
-                    </article>
+                                <span class="photo-caption block font-semibold text-sm sm:text-base">Équipement médical</span>
+                            </span>
+                        </span>
+                    </button>
 
                     <!-- Photo 5 - Premiers Soins OPTIMISÉE -->
-                    <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
-                        data-index="4" role="button" tabindex="0"
-                        aria-label="Agrandir la photo : Premiers soins">
-                        <div class="photo-thumb">
+                    <button type="button" class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item block w-full text-left"
+                        data-index="4" aria-label="Agrandir la photo : Premiers soins">
+                        <span class="photo-thumb block">
                             <img src="assets/images/cabinet-premiers-soins-800.webp" data-full="assets/images/cabinet-premiers-soins-1200.webp"
                                 srcset="assets/images/cabinet-premiers-soins-400.webp 400w,
                                     assets/images/cabinet-premiers-soins-800.webp 800w"
@@ -573,21 +575,19 @@
                                 alt="Armoire de matériel de premiers soins"
                                 width="800" height="600" loading="lazy" decoding="async"
                                 class="photo-img w-full h-full object-cover">
-                        </div>
-                        <div
-                            class="photo-overlay absolute inset-0 flex items-end p-4">
-                            <div class="text-white">
+                        </span>
+                        <span class="photo-overlay absolute inset-0 flex items-end p-4">
+                            <span class="block text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
-                                <p class="font-semibold text-sm sm:text-base">Premiers soins</p>
-                            </div>
-                        </div>
-                    </article>
+                                <span class="photo-caption block font-semibold text-sm sm:text-base">Premiers soins</span>
+                            </span>
+                        </span>
+                    </button>
 
                     <!-- Photo 6 - Salle d'attente OPTIMISÉE -->
-                    <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
-                        data-index="5" role="button" tabindex="0"
-                        aria-label="Agrandir la photo : Salle d'attente">
-                        <div class="photo-thumb">
+                    <button type="button" class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item block w-full text-left"
+                        data-index="5" aria-label="Agrandir la photo : Salle d'attente">
+                        <span class="photo-thumb block">
                             <img src="assets/images/cabinet-salle-attente-800.webp" data-full="assets/images/cabinet-salle-attente-1200.webp"
                                 srcset="assets/images/cabinet-salle-attente-400.webp 400w,
                                     assets/images/cabinet-salle-attente-800.webp 800w"
@@ -595,15 +595,14 @@
                                 alt="Salle d'attente du cabinet"
                                 width="800" height="600" loading="lazy" decoding="async"
                                 class="photo-img w-full h-full object-cover">
-                        </div>
-                        <div
-                            class="photo-overlay absolute inset-0 flex items-end p-4">
-                            <div class="text-white">
+                        </span>
+                        <span class="photo-overlay absolute inset-0 flex items-end p-4">
+                            <span class="block text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
-                                <p class="font-semibold text-sm sm:text-base">Salle d'attente</p>
-                            </div>
-                        </div>
-                    </article>
+                                <span class="photo-caption block font-semibold text-sm sm:text-base">Salle d'attente</span>
+                            </span>
+                        </span>
+                    </button>
                 </div>
             </div>
 
@@ -612,7 +611,7 @@
                 aria-label="Description des installations">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/4 mb-6 md:mb-0 flex justify-center" aria-hidden="true">
-                        <i class="fas fa-clinic-medical text-blue-600 text-4xl sm:text-5xl"></i>
+                        <i class="fas fa-clinic-medical text-blue-600 text-4xl sm:text-5xl" aria-hidden="true"></i>
                     </div>
                     <div class="md:w-3/4 md:pl-8">
                         <h3 class="text-xl sm:text-2xl font-bold text-blue-800 mb-4">Le cabinet</h3>
@@ -662,8 +661,7 @@
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                         alt="Le Dr. Bouchaib HAMYA à son bureau, au cabinet d'Inzegane"
                         width="800" height="1067" loading="lazy" decoding="async"
-                        class="rounded-lg shadow-xl w-full h-auto object-cover"
-                        style="background-color: #f3f4f6">
+                        class="rounded-lg shadow-xl w-full h-auto object-cover bg-gray-100">
                 </div>
 
                 <!-- Contenu texte OPTIMISÉ -->
@@ -707,14 +705,14 @@
                                     <span>
                                         <span>Dr. Bouchaib HAMYA</span>
                                     </span>,
-                                    <span>Médecin Généraliste & Échographie à Inzegane</span>
+                                    <span>Médecin Généraliste &amp; Échographie à Inzegane</span>
                                 </footer>
                             </div>
                         </div>
                     </blockquote>
 
                     <!-- Qualifications -->
-                    <div class="flex flex-wrap gap-3 mb-8" aria-label="Qualifications et spécialités du Dr. HAMYA">
+                    <div class="flex flex-wrap gap-3 mb-8" role="group" aria-label="Qualifications et spécialités du Dr. HAMYA">
 
                         <!-- Diplôme -->
                         <div class="bg-white px-4 py-3 rounded-lg shadow-sm flex items-center border border-gray-100">
@@ -761,7 +759,7 @@
                                         class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm font-medium"
                                         aria-label="Appeler le cabinet du Dr. HAMYA">
                                         <i class="fas fa-phone mr-2" aria-hidden="true"></i>
-                                        05 28 87 25 13
+                                        05&nbsp;28&nbsp;87&nbsp;25&nbsp;13
                                     </a>
                                 </div>
                             </div>
@@ -779,7 +777,7 @@
             <!-- En-tête de section -->
             <div class="text-center mb-12">
                 <span class="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-1 rounded-full mb-3">
-                    <i class="fas fa-question-circle mr-2"></i> Questions Fréquentes
+                    <i class="fas fa-question-circle mr-2" aria-hidden="true"></i> Questions Fréquentes
                 </span>
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
                     Questions Fréquentes - Cabinet Dr. HAMYA
@@ -794,27 +792,27 @@
             <!-- Grille FAQ -->
             <div class="max-w-4xl mx-auto">
 
-                <!-- Services & Informations -->
+                <!-- Services &amp; Informations -->
                 <div>
                     <div class="bg-white rounded-xl shadow-lg p-1">
                         <h3 class="text-xl font-bold text-blue-800 mb-4 p-4 pb-2 flex items-center">
-                            <i class="fas fa-calendar-check text-blue-600 mr-3"></i>
-                            Services & Informations
+                            <i class="fas fa-calendar-check text-blue-600 mr-3" aria-hidden="true"></i>
+                            Services &amp; Informations
                         </h3>
 
                         <!-- Question 1 -->
                         <div class="faq-item group" data-faq-category="rendezvous">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-1">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Comment prendre rendez-vous avec un médecin généraliste à Inzegane ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-1" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <p class="text-gray-700 mb-3">
                                         Pour prendre rendez-vous avec le <strong>Dr. Bouchaib HAMYA</strong>, vous
@@ -822,21 +820,21 @@
                                     </p>
                                     <ul class="space-y-2 mb-3">
                                         <li class="flex items-start">
-                                            <i class="fas fa-phone text-green-600 mt-1 mr-2 text-sm"></i>
+                                            <i class="fas fa-phone text-green-600 mt-1 mr-2 text-sm" aria-hidden="true"></i>
                                             <span><strong>Par téléphone</strong> : Appelez le
                                                 <a href="tel:+212528872513"
-                                                    class="text-blue-700 font-semibold hover:text-blue-900">05 28 87
-                                                    25 13</a>
+                                                    class="text-blue-700 font-semibold hover:text-blue-900">05&nbsp;28&nbsp;87
+                                                    25&nbsp;13</a>
                                                 du lundi au samedi
                                             </span>
                                         </li>
                                         <li class="flex items-start">
-                                            <i class="fas fa-building text-blue-600 mt-1 mr-2 text-sm"></i>
+                                            <i class="fas fa-building text-blue-600 mt-1 mr-2 text-sm" aria-hidden="true"></i>
                                             <span><strong>Sur place</strong> : Pendant les heures d'ouverture du
                                                 cabinet</span>
                                         </li>
                                         <li class="flex items-start">
-                                            <i class="fas fa-envelope text-yellow-600 mt-1 mr-2 text-sm"></i>
+                                            <i class="fas fa-envelope text-yellow-600 mt-1 mr-2 text-sm" aria-hidden="true"></i>
                                             <span><strong>Par email</strong> : Envoyez un message à
                                                 <a href="mailto:docteurhamya@gmail.com"
                                                     class="text-blue-700 font-semibold hover:text-blue-900">docteurhamya@gmail.com</a>
@@ -845,7 +843,7 @@
                                     </ul>
                                     <div class="bg-white p-3 rounded border border-blue-200 mt-3">
                                         <p class="text-sm text-gray-600 flex items-center">
-                                            <i class="fas fa-info-circle text-blue-500 mr-2"></i>
+                                            <i class="fas fa-info-circle text-blue-500 mr-2" aria-hidden="true"></i>
                                             <strong>Conseil</strong> : Pour une prise de rendez-vous rapide,
                                             privilégiez l'appel téléphonique.
                                         </p>
@@ -856,17 +854,17 @@
 
                         <!-- Question 2 -->
                         <div class="faq-item group" data-faq-category="rendezvous">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-2">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Quels sont les horaires de consultation ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-2" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                                         <div class="bg-white p-3 rounded border border-green-200">
@@ -879,7 +877,7 @@
                                         </div>
                                     </div>
                                     <p class="text-gray-700 mb-2">
-                                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2" aria-hidden="true"></i>
                                         <strong>Fermé le dimanche.</strong>
                                     </p>
                                 </div>
@@ -887,38 +885,38 @@
                         </div>
 
                         <div class="faq-item group" data-faq-category="services">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-3">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Acceptez-vous les nouveaux patients ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-3" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <p class="text-gray-700 mb-3">
                                         <strong class="text-green-700">Oui</strong>, le cabinet accueille les nouveaux patients.
                                     </p>
                                     <ul class="space-y-2 mb-3">
                                         <li class="flex items-start">
-                                            <i class="fas fa-users text-blue-500 mt-1 mr-2"></i>
+                                            <i class="fas fa-users text-blue-500 mt-1 mr-2" aria-hidden="true"></i>
                                             <span>Patients adultes et enfants</span>
                                         </li>
                                         <li class="flex items-start">
-                                            <i class="fas fa-home text-green-500 mt-1 mr-2"></i>
+                                            <i class="fas fa-home text-green-500 mt-1 mr-2" aria-hidden="true"></i>
                                             <span>Résidents d'Inzegane et des communes alentour</span>
                                         </li>
                                         <li class="flex items-start">
-                                            <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                            <i class="fas fa-file-medical text-purple-500 mt-1 mr-2" aria-hidden="true"></i>
                                             <span>Transferts d'autres médecins acceptés</span>
                                         </li>
                                     </ul>
                                     <div class="bg-white p-3 rounded border border-green-200">
                                         <p class="text-sm text-gray-600 flex items-center">
-                                            <i class="fas fa-heart text-red-500 mr-2"></i>
+                                            <i class="fas fa-heart text-red-500 mr-2" aria-hidden="true"></i>
                                             <strong>Nouveau patient ?</strong> Pensez à apporter vos anciens
                                             documents médicaux pour le premier rendez-vous.
                                         </p>
@@ -928,17 +926,17 @@
                         </div>
 
                         <div class="faq-item group" data-faq-category="services">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-4">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Comment se préparer à une consultation chez un médecin généraliste à Inzegane ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-4" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <div class="mb-4">
                                         <p class="text-gray-700 mb-3">
@@ -954,36 +952,37 @@
                         </div>
 
                         <div class="faq-item group" data-faq-category="services">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-5">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Quels types de soins médicaux propose un médecin généraliste à Inzegane ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-5" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <div class="mb-4">
                                         <p class="text-gray-700 mb-3">
                                             Le cabinet assure notamment :
+                                        </p>
                                         <ul class="space-y-2 mb-3">
                                             <li class="flex items-start">
-                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2" aria-hidden="true"></i>
                                                 <span>Diagnostic et traitement des maladies courantes</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2" aria-hidden="true"></i>
                                                 <span>Suivi des maladies chroniques (hypertension, diabète, etc.)</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2" aria-hidden="true"></i>
                                                 <span>Vaccinations et bilans de santé</span>
                                             </li>
                                             <li class="flex items-start">
-                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2"></i>
+                                                <i class="fas fa-file-medical text-purple-500 mt-1 mr-2" aria-hidden="true"></i>
                                                 <span>Soins préventifs et conseils en nutrition</span>
                                             </li>
                                         </ul>
@@ -995,19 +994,19 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="faq-item group" data-faq-category="services">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-6">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Quels services d'échographie proposez-vous ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-6" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <p class="text-gray-700 mb-3">
                                         Le cabinet dispose d'un échographe pour les examens suivants :
@@ -1034,7 +1033,7 @@
                                     </div>
                                     <div class="bg-white p-3 rounded border border-blue-200">
                                         <p class="text-sm text-gray-600 flex items-center">
-                                            <i class="fas fa-file-medical text-blue-500 mr-2"></i>
+                                            <i class="fas fa-file-medical text-blue-500 mr-2" aria-hidden="true"></i>
                                             <strong>Important</strong> : Un compte rendu est remis à l'issue de chaque examen.
                                         </p>
                                     </div>
@@ -1043,23 +1042,23 @@
                         </div>
 
                         <div class="faq-item group" data-faq-category="services">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-7">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Puis-je obtenir une consultation sans rendez-vous avec le médecin généraliste à
                                         Inzegane ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-7" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <div class="mb-4">
                                         <p class="text-gray-700 mb-3">
                                             Oui. Le cabinet reçoit avec ou sans rendez-vous. Sans rendez-vous, l'attente dépend de l'affluence : un appel au
-                                        <a href="tel:+212528872513" class="text-blue-700 font-semibold hover:text-blue-900">05 28 87 25 13</a>
+                                        <a href="tel:+212528872513" class="text-blue-700 font-semibold hover:text-blue-900">05&nbsp;28&nbsp;87&nbsp;25&nbsp;13</a>
                                         permet de connaître les disponibilités du moment. </p>
                                     </div>
                                 </div>
@@ -1067,22 +1066,22 @@
                         </div>
 
                         <div class="faq-item group" data-faq-category="rendezvous">
-                            <button
+                            <button type="button"
                                 class="faq-question w-full text-left p-4 border-b border-gray-100 hover:bg-blue-50 transition-all duration-200 rounded-lg group-hover:shadow-sm"
-                                aria-expanded="false">
-                                <div class="flex justify-between items-center">
+                                aria-expanded="false" aria-controls="faq-reponse-8">
+                                <span class="flex justify-between items-center">
                                     <span class="font-semibold text-gray-800 text-lg">
                                         Quels sont les tarifs des consultations chez votre médecin généraliste à
                                         Inzegane ?
                                     </span>
-                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300"></i>
-                                </div>
+                                    <i class="fas fa-chevron-down text-blue-500 transition-transform duration-300" aria-hidden="true"></i>
+                                </span>
                             </button>
-                            <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+                            <div id="faq-reponse-8" class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
                                 <div class="p-4 pt-2 bg-blue-50 rounded-b-lg">
                                     <p class="text-gray-700 mb-3">
                                         Les tarifs des consultations et des examens vous sont communiqués par téléphone au
-                                        <a href="tel:+212528872513" class="text-blue-700 font-semibold hover:text-blue-900">05 28 87 25 13</a>.
+                                        <a href="tel:+212528872513" class="text-blue-700 font-semibold hover:text-blue-900">05&nbsp;28&nbsp;87&nbsp;25&nbsp;13</a>.
                                         Le cabinet remplit les feuilles de soins AMO (CNSS, CNOPS) pour votre remboursement et
                                         fournit les documents demandés par les assurances privées.
                                     </p>
@@ -1094,14 +1093,14 @@
 
                     <!-- CTA pour plus de questions -->
                     <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-xl p-5 text-center">
-                        <i class="fas fa-comments text-3xl mb-3 opacity-80"></i>
+                        <i class="fas fa-comments text-3xl mb-3 opacity-80" aria-hidden="true"></i>
                         <h4 class="font-bold text-lg mb-2">Une autre question ?</h4>
                         <p class="text-blue-100 mb-4 text-sm">
                             Appelez le cabinet aux heures d'ouverture.
                         </p>
                         <a href="tel:+212528872513"
                             class="inline-flex items-center bg-white text-blue-800 font-semibold py-2 px-5 rounded-lg hover:bg-blue-100 transition-colors">
-                            <i class="fas fa-phone mr-2"></i>
+                            <i class="fas fa-phone mr-2" aria-hidden="true"></i>
                             Appelez-nous
                         </a>
                     </div>
@@ -1192,7 +1191,7 @@
             <!-- Titre -->
             <div class="text-center mb-12">
                 <h2 id="contact-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">
-                    Contact & <span>Rendez-vous Médicaux</span>
+                    Contact &amp; <span>Rendez-vous Médicaux</span>
                 </h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">
                     Prenez rendez-vous avec le <strong>Dr. Bouchaib HAMYA</strong>, médecin généraliste à Inzegane
@@ -1252,7 +1251,7 @@
                                     class="text-gray-800 hover:text-blue-700 text-lg font-semibold transition-colors"
                                     aria-label="Appeler le cabinet du Docteur HAMYA">
                                     <i class="fas fa-phone-volume mr-2 text-green-600" aria-hidden="true"></i>
-                                    +212 5 28 87 25 13
+                                    +212&nbsp;5&nbsp;28&nbsp;87&nbsp;25&nbsp;13
                                 </a>
                                 <p class="text-sm text-gray-500 mt-1">Appel direct depuis mobile/ordinateur</p>
                             </div>
@@ -1324,7 +1323,7 @@
                     <div class="sticky top-24">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-2xl font-bold text-blue-800 flex items-center">
-                                <i class="fas fa-map-marked-alt text-blue-600 mr-3"></i>
+                                <i class="fas fa-map-marked-alt text-blue-600 mr-3" aria-hidden="true"></i>
                                 Localisation
                             </h3>
                         </div>
@@ -1338,7 +1337,7 @@
                                 class="absolute inset-0 bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center z-10 transition-opacity duration-500">
                                 <div class="text-center p-6">
                                     <div class="inline-block p-4 bg-white rounded-full shadow-lg mb-4">
-                                        <i class="fas fa-map text-blue-400 text-4xl"></i>
+                                        <i class="fas fa-map text-blue-400 text-4xl" aria-hidden="true"></i>
                                     </div>
                                     <p class="text-gray-600 font-medium">Chargement de la carte...</p>
                                     <p class="text-gray-400 text-sm mt-1">Cabinet médical Dr. HAMYA</p>
@@ -1347,23 +1346,32 @@
 
                             <!-- La carte Leaflet sera injectée ici -->
                             <div id="leaflet-map" class="h-full w-full"></div>
+                            <noscript>
+                                <a href="https://www.openstreetmap.org/?mlat=30.359826&amp;mlon=-9.526296#map=17/30.359826/-9.526296" target="_blank" rel="noopener noreferrer"
+                                    class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-blue-50 to-gray-100">
+                                    <i class="fas fa-external-link-alt text-blue-400 text-5xl mb-4" aria-hidden="true"></i>
+                                    <span class="text-xl font-bold text-gray-800 mb-2">Cabinet Dr. HAMYA</span>
+                                    <span class="text-gray-600">Cliquez pour voir sur OpenStreetMap</span>
+                                    <span class="text-gray-500 text-sm mt-2">Inzegane (face Marjane)</span>
+                                </a>
+                            </noscript>
 
                             <!-- Contrôles de la carte -->
                             <div class="absolute bottom-4 right-4 z-20 flex flex-col gap-2">
                                 <button type="button" data-action="zoom-in"
                                     class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110"
                                     aria-label="Zoomer">
-                                    <i class="fas fa-plus"></i>
+                                    <i class="fas fa-plus" aria-hidden="true"></i>
                                 </button>
                                 <button type="button" data-action="zoom-out"
                                     class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110"
                                     aria-label="Dézoomer">
-                                    <i class="fas fa-minus"></i>
+                                    <i class="fas fa-minus" aria-hidden="true"></i>
                                 </button>
                                 <button type="button" data-action="locate"
                                     class="bg-blue-600 text-white w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110"
                                     aria-label="Me localiser">
-                                    <i class="fas fa-location-arrow"></i>
+                                    <i class="fas fa-location-arrow" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -1388,9 +1396,9 @@
 
                         <!-- Coordonnées GPS pour navigation -->
                         <div class="mt-4 text-center">
-                            <a href="https://maps.app.goo.gl/S8nEuBciGKWgReLq6" target="_blank">
-                                Ouvrir la carte Google Maps
-                            </a>
+                            <a href="https://maps.app.goo.gl/S8nEuBciGKWgReLq6" target="_blank" rel="noopener noreferrer"
+                                class="text-blue-700 font-medium underline hover:text-blue-900">Ouvrir la carte Google Maps<span
+                                    class="sr-only"> (nouvel onglet)</span></a>
                         </div>
                     </div>
                 </div>
@@ -1420,24 +1428,9 @@
     </section>
 
 
-    <!-- Fallback pour les navigateurs sans JavaScript -->
-    <noscript>
-        <div class="mt-4">
-            <a href="https://www.openstreetmap.org/?mlat=30.359826&mlon=-9.526296#map=17/30.359826/-9.526296"
-                target="_blank" rel="noopener noreferrer"
-                class="block rounded-xl overflow-hidden shadow-xl border-2 border-blue-200">
-                <div class="h-96 bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col items-center justify-center">
-                    <div class="text-center p-6">
-                        <i class="fas fa-external-link-alt text-blue-400 text-5xl mb-4"></i>
-                        <h4 class="text-xl font-bold text-gray-800 mb-2">Cabinet Dr. HAMYA</h4>
-                        <p class="text-gray-600">Cliquez pour voir sur OpenStreetMap</p>
-                        <p class="text-gray-500 text-sm mt-2">Inzegane (face Marjane)</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </noscript>
 
+
+    </main>
 
     <!-- Footer -->
     <footer class="bg-blue-900 text-white py-8">
@@ -1445,7 +1438,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <div class="flex items-center mb-8">
-                        <i class="fas fa-stethoscope text-white text-2xl mr-3"></i>
+                        <i class="fas fa-stethoscope text-white text-2xl mr-3" aria-hidden="true"></i>
                         <h3 class="text-xl font-bold">Dr. Bouchaib HAMYA</h3>
                     </div>
                     <p class="text-blue-200">Cabinet de médecine générale et échographie</p>
@@ -1472,22 +1465,22 @@
     </footer>
 
     <!-- Modal pour agrandir les photos -->
-    <div id="photo-modal"
-        class="fixed inset-0 bg-black bg-opacity-90 z-50 photo-modal-hidden items-center justify-center p-4">
+    <div id="photo-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 photo-modal-hidden items-center justify-center p-4"
+        role="dialog" aria-modal="true" aria-labelledby="modal-caption">
         <div class="relative max-w-4xl max-h-full">
-            <button id="close-photo-modal"
+            <button id="close-photo-modal" type="button" aria-label="Fermer la photo"
                 class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 transition">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" aria-hidden="true"></i>
             </button>
-            <button id="prev-photo"
+            <button id="prev-photo" type="button" aria-label="Photo précédente"
                 class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 transition">
-                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
             </button>
-            <button id="next-photo"
+            <button id="next-photo" type="button" aria-label="Photo suivante"
                 class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 transition">
-                <i class="fas fa-chevron-right"></i>
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
             </button>
-            <img id="modal-image" src="" alt="" class="max-w-full max-h-screen rounded-lg">
+            <img id="modal-image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" class="max-w-full max-h-screen rounded-lg">
             <div id="modal-caption" class="text-white text-center mt-4 text-lg"></div>
         </div>
     </div>

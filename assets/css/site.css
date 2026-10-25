@@ -467,3 +467,26 @@ button:focus {
 .map-popup .map-popup-directions {
     background: #3b82f6;
 }
+
+/* 5. Accessibilité */
+/* Lien « Aller au contenu principal » : visible seulement au clavier */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: #1e40af;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* Sections ciblées par le menu : focus déplacé sans contour visible */
+[tabindex="-1"]:focus {
+    outline: none;
+}

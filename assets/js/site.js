@@ -64,6 +64,9 @@
                 const offset = header ? header.offsetHeight : 0;
                 const top = target.getBoundingClientRect().top + window.scrollY - offset;
                 window.scrollTo({ top: top, behavior: 'smooth' });
+                // Le focus suit le défilement (lecteurs d'écran, navigation au clavier)
+                if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
             });
         });
     }
@@ -110,7 +113,7 @@
 
         const photos = items.map((item) => {
             const img = item.querySelector('img');
-            const caption = item.querySelector('.photo-overlay p');
+            const caption = item.querySelector('.photo-caption');
             return {
                 src: img.getAttribute('src'),
                 srcset: img.getAttribute('srcset'),
@@ -148,7 +151,6 @@
             lastFocused = document.activeElement;
             modal.classList.remove('photo-modal-hidden');
             modal.classList.add('photo-modal-visible');
-            modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             if (closeButton) setTimeout(() => closeButton.focus(), 100);
         }
@@ -156,7 +158,6 @@
         function close() {
             modal.classList.remove('photo-modal-visible');
             modal.classList.add('photo-modal-hidden');
-            modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
             if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
         }
@@ -167,13 +168,7 @@
         }
 
         items.forEach((item, index) => {
-            item.addEventListener('click', () => open(index));
-            item.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    open(index);
-                }
-            });
+            item.addEventListener('click', () => open(index));  // boutons : Entrée et Espace natifs
         });
 
         if (closeButton) closeButton.addEventListener('click', close);
@@ -185,6 +180,23 @@
 
         document.addEventListener('keydown', (event) => {
             if (!isOpen()) return;
+            if (event.key === 'Tab') {
+                // Le focus reste dans la photo agrandie tant qu'elle est ouverte
+                const focusables = [closeButton, prevButton, nextButton].filter(Boolean);
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (!focusables.includes(document.activeElement)) {
+                    event.preventDefault();
+                    first.focus();
+                } else if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+                return;
+            }
             if (event.key === 'Escape') close();
             else if (event.key === 'ArrowLeft') step(-1);
             else if (event.key === 'ArrowRight') step(1);
