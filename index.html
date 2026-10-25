@@ -32,11 +32,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" as="style" href="assets/css/fonts.css">
-    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.x/dist/tailwind.min.css">
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="preload" as="script" href="assets/js/main.min.js">
 
     <!-- Feuilles de style -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.x/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="assets/css/fonts.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <!-- Leaflet CSS & JS (très léger) -->
@@ -94,17 +94,90 @@
             }
         }
 
-        /* Supprimer l'effet hover sur mobile tactile */
-        @media (hover: none) and (pointer: coarse) {
-            #services [class*="hover:scale"]:hover {
-                transform: none !important;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        /* Compatibilité Tailwind v2 : effets définis ici (les classes v3 n'existent pas en v2) */
+        section[id] {
+            scroll-margin-top: 5rem;
+        }
+
+        /* Cartes services : léger zoom au survol (souris uniquement) */
+        .service-card {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+
+        @media (hover: hover) {
+            .service-card:hover {
+                transform: scale(1.02);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+
+        .img-sheen {
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        }
+
+        /* Galerie : vignettes 4:3 recadrées, légende sur dégradé sombre */
+        .photo-thumb {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
+
+        @supports not (aspect-ratio: 4 / 3) {
+            .photo-thumb {
+                position: relative;
+                padding-top: 75%;
+            }
+
+            .photo-thumb img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        .photo-img {
+            transition: transform 0.3s ease;
+        }
+
+        .photo-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-item:focus-visible {
+            outline: 3px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        .photo-item:focus-visible .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-item:focus-visible .photo-img {
+            transform: scale(1.05);
+        }
+
+        @media (hover: hover) {
+            .photo-item:hover .photo-overlay {
+                opacity: 1;
+            }
+
+            .photo-item:hover .photo-img {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Écrans tactiles : légendes toujours visibles (pas de survol possible) */
+        @media (hover: none) {
+            .photo-overlay {
+                opacity: 1;
             }
         }
 
         /* Fallback pour prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
-            #services * {
+            #services *,
+            #photos * {
                 transition: none !important;
                 animation: none !important;
             }
@@ -404,11 +477,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Service 1 - Médecine Générale -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
-                        transition-all duration-300 ease-out
-                        hover:scale-[1.02] hover:shadow-xl 
-                        active:scale-100
-                        transform-gpu will-change-transform" role="article" aria-labelledby="service1-title"
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden" role="article" aria-labelledby="service1-title"
                     itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
 
                     <meta itemprop="serviceType" content="Médecine Générale">
@@ -421,7 +490,7 @@
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             alt="Icône représentant la médecine générale - stéthoscope et coeur" width="400"
                             height="200" loading="lazy" class="lazy-image w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        <div class="absolute inset-0 img-sheen pointer-events-none">
                         </div>
                     </div>
 
@@ -456,11 +525,7 @@
                 </div>
 
                 <!-- Service 2 - Échographie -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
-                        transition-all duration-300 ease-out
-                        hover:scale-[1.02] hover:shadow-xl 
-                        active:scale-100
-                        transform-gpu will-change-transform" role="article" aria-labelledby="service2-title"
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden" role="article" aria-labelledby="service2-title"
                     itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
 
                     <meta itemprop="serviceType" content="Échographie Médicale">
@@ -473,7 +538,7 @@
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             alt="Équipement d'échographie médicale moderne" width="400" height="200" loading="lazy"
                             class="lazy-image w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        <div class="absolute inset-0 img-sheen pointer-events-none">
                         </div>
                     </div>
 
@@ -508,11 +573,7 @@
                 </div>
 
                 <!-- Service 3 - Expertise Médico-Légale -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
-                        transition-all duration-300 ease-out
-                        hover:scale-[1.02] hover:shadow-xl 
-                        active:scale-100
-                        transform-gpu will-change-transform" role="article" aria-labelledby="service3-title"
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden" role="article" aria-labelledby="service3-title"
                     itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
 
                     <meta itemprop="serviceType" content="Expertise Médico-Légale">
@@ -525,7 +586,7 @@
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             alt="Balance de la justice représentant l'expertise médico-légale" width="400" height="200"
                             loading="lazy" class="lazy-image w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        <div class="absolute inset-0 img-sheen pointer-events-none">
                         </div>
                     </div>
 
@@ -556,24 +617,20 @@
                 </div>
 
                 <!-- Service 4 - Premiers Soins -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden 
-                        transition-all duration-300 ease-out
-                        hover:scale-[1.02] hover:shadow-xl 
-                        active:scale-100
-                        transform-gpu will-change-transform" role="article" aria-labelledby="service4-title"
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden" role="article" aria-labelledby="service4-title"
                     itemprop="makesOffer" itemscope itemtype="https://schema.org/Service">
 
                     <meta itemprop="serviceType" content="Premiers Soins Médicaux">
 
                     <div class="h-48 overflow-hidden relative">
-                        <img data-src="assets/images/coeur.webp"
+                        <img data-src="assets/images/premiers-soins-800.webp"
                             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3C/svg%3E"
                             srcset="assets/images/premiers-soins-400.webp 400w,
                                  assets/images/premiers-soins-800.webp 800w"
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             alt="Trousse de premiers soins et matériel médical d'urgence" width="400" height="200"
                             loading="lazy" class="lazy-image w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent pointer-events-none">
+                        <div class="absolute inset-0 img-sheen pointer-events-none">
                         </div>
                     </div>
 
@@ -610,7 +667,7 @@
         </div>
     </section>
 
-    <section id="photos" class="py-16 bg-white scroll-mt-20" aria-labelledby="photos-title">
+    <section id="photos" class="py-16 bg-white" aria-labelledby="photos-title">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 id="photos-title" class="text-3xl md:text-4xl font-bold text-blue-800 mb-4">Photos du Cabinet</h2>
@@ -625,17 +682,17 @@
                     <!-- Photo 1 - Accueil OPTIMISÉE -->
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="0" role="button" tabindex="0" aria-label="Voir la photo de la salle d'attente">
-                        <div class="aspect-w-4 aspect-h-3">
+                        <div class="photo-thumb">
                             <img src="assets/images/cabinet-accueil.webp" srcset="assets/images/cabinet-accueil-400.webp 400w,
                                     assets/images/cabinet-accueil-800.webp 800w,
                                     assets/images/cabinet-accueil-1200.webp 1200w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Salle d'attente moderne du cabinet médical Dr. HAMYA à Inzegane, avec sièges confortables et décoration apaisante"
                                 width="800" height="600" loading="lazy" decoding="async"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform">
+                                class="photo-img w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            class="photo-overlay absolute inset-0 flex items-end p-4">
                             <div class="text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
                                 <p class="font-semibold text-sm sm:text-base">Accueil</p>
@@ -646,16 +703,16 @@
                     <!-- Photo 2 - Bureau OPTIMISÉE -->
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="1" role="button" tabindex="0" aria-label="Voir la photo du bureau de consultation">
-                        <div class="aspect-w-4 aspect-h-3">
+                        <div class="photo-thumb">
                             <img src="assets/images/cabinet-bureau.webp" srcset="assets/images/cabinet-bureau-400.webp 400w,
                                     assets/images/cabinet-bureau-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Bureau professionnel du Dr. HAMYA avec équipement informatique, documentation médicale et espace d'accueil patient"
                                 width="800" height="600" loading="lazy" decoding="async"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform">
+                                class="photo-img w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            class="photo-overlay absolute inset-0 flex items-end p-4">
                             <div class="text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
                                 <p class="font-semibold text-sm sm:text-base">Bureau de consultation</p>
@@ -666,16 +723,16 @@
                     <!-- Photo 3 - Échographie OPTIMISÉE -->
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="2" role="button" tabindex="0" aria-label="Voir la photo de la salle d'échographie">
-                        <div class="aspect-w-4 aspect-h-3">
+                        <div class="photo-thumb">
                             <img src="assets/images/cabinet-echographie.webp" srcset="assets/images/cabinet-echographie-400.webp 400w,
                                     assets/images/cabinet-echographie-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Salle d'échographie équipée d'un appareil à ultrasons moderne pour diagnostics précis au cabinet du Dr. HAMYA"
                                 width="800" height="600" loading="lazy" decoding="async"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform">
+                                class="photo-img w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            class="photo-overlay absolute inset-0 flex items-end p-4">
                             <div class="text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
                                 <p class="font-semibold text-sm sm:text-base">Salle d'échographie</p>
@@ -686,16 +743,16 @@
                     <!-- Photo 4 - Équipement OPTIMISÉE -->
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="3" role="button" tabindex="0" aria-label="Voir la photo des équipements médicaux">
-                        <div class="aspect-w-4 aspect-h-3">
+                        <div class="photo-thumb">
                             <img src="assets/images/cabinet-equipement.webp" srcset="assets/images/cabinet-equipement-400.webp 400w,
                                     assets/images/cabinet-equipement-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Équipement médical moderne et instruments stériles disponibles au cabinet du Dr. HAMYA à Inzegane"
                                 width="800" height="600" loading="lazy" decoding="async"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform">
+                                class="photo-img w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            class="photo-overlay absolute inset-0 flex items-end p-4">
                             <div class="text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
                                 <p class="font-semibold text-sm sm:text-base">Équipement médical</p>
@@ -707,16 +764,16 @@
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="4" role="button" tabindex="0"
                         aria-label="Voir la photo de la zone de premiers soins">
-                        <div class="aspect-w-4 aspect-h-3">
+                        <div class="photo-thumb">
                             <img src="assets/images/cabinet-premiers-soins.webp" srcset="assets/images/cabinet-premiers-soins-400.webp 400w,
                                     assets/images/cabinet-premiers-soins-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Zone de premiers soins équipée avec matériel stérile pour interventions médicales urgentes au cabinet Dr. HAMYA"
                                 width="800" height="600" loading="lazy" decoding="async"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform">
+                                class="photo-img w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            class="photo-overlay absolute inset-0 flex items-end p-4">
                             <div class="text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
                                 <p class="font-semibold text-sm sm:text-base">Premiers Soins</p>
@@ -728,16 +785,16 @@
                     <article class="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer photo-item"
                         data-index="5" role="button" tabindex="0"
                         aria-label="Voir la photo de la salle d'attente principale">
-                        <div class="aspect-w-4 aspect-h-3">
+                        <div class="photo-thumb">
                             <img src="assets/images/cabinet-salle-attente.webp" srcset="assets/images/cabinet-salle-attente-400.webp 400w,
                                     assets/images/cabinet-salle-attente-800.webp 800w"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 alt="Salle d'attente spacieuse et lumineuse du cabinet médical Dr. HAMYA à Inzegane, avec vue sur Marjane"
                                 width="800" height="600" loading="lazy" decoding="async"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform">
+                                class="photo-img w-full h-full object-cover">
                         </div>
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            class="photo-overlay absolute inset-0 flex items-end p-4">
                             <div class="text-white">
                                 <i class="fas fa-expand text-xl mb-1" aria-hidden="true"></i>
                                 <p class="font-semibold text-sm sm:text-base">Salle d'attente</p>
@@ -788,7 +845,7 @@
     </section>
 
     <!-- About Section - VERSION OPTIMISÉE -->
-    <section id="apropos" class="py-16 bg-gray-100 scroll-mt-20" itemscope itemtype="https://schema.org/Physician"
+    <section id="apropos" class="py-16 bg-gray-100" itemscope itemtype="https://schema.org/Physician"
         aria-labelledby="about-title">
 
         <!-- Microdonnées invisibles pour SEO -->
@@ -799,14 +856,14 @@
             <div class="flex flex-col md:flex-row items-center">
 
                 <!-- Image OPTIMISÉE avec bureau-docteur.webp -->
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10" itemprop="image" itemscope
+                <div class="w-full md:w-1/2 mb-10 md:mb-0 md:pr-10" itemprop="image" itemscope
                     itemtype="https://schema.org/ImageObject">
 
                     <picture>
                         <!-- Version WebP moderne -->
                         <source srcset="assets/images/bureau-docteur-400.webp 400w,
                                 assets/images/bureau-docteur-800.webp 800w,
-                                assets/images/bureau-docteur-1200.webp 1200w" type="image/webp"
+                                assets/images/bureau-docteur-1200.webp 1200w" type="image/webp" width="800" height="1067"
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px">
 
                         <!-- Fallback JPG pour compatibilité -->
@@ -817,7 +874,7 @@
                         <!-- Image principale avec tous les attributs SEO -->
                         <img src="assets/images/bureau-docteur-800.webp"
                             alt="Bureau du Dr. Bouchaib HAMYA - Cabinet médical moderne à Inzegane avec équipement de consultation professionnel"
-                            width="800" height="600" loading="lazy" decoding="async"
+                            width="800" height="1067" loading="lazy" decoding="async"
                             class="rounded-lg shadow-xl w-full h-auto object-cover transition-opacity duration-300"
                             style="background-color: #f3f4f6" onload="this.style.opacity=1" itemprop="contentUrl"
                             itemscope itemtype="https://schema.org/ImageObject">
@@ -985,7 +1042,7 @@
     </section>
 
     <!-- FAQ Section - Optimisée SEO et UX -->
-    <section id="faq" class="py-16 bg-gradient-to-b from-white to-blue-50 scroll-mt-20">
+    <section id="faq" class="py-16 bg-gradient-to-b from-white to-blue-50">
         <div class="container mx-auto px-4">
 
             <!-- En-tête de section -->
@@ -1048,7 +1105,7 @@
                                                 cabinet</span>
                                         </li>
                                         <li class="flex items-start">
-                                            <i class="fas fa-envelope text-amber-600 mt-1 mr-2 text-sm"></i>
+                                            <i class="fas fa-envelope text-yellow-600 mt-1 mr-2 text-sm"></i>
                                             <span><strong>Par email</strong> : Envoyez un message à
                                                 <a href="mailto:docteurhamya@gmail.com"
                                                     class="text-blue-700 font-semibold hover:text-blue-900">docteurhamya@gmail.com</a>
@@ -1091,7 +1148,7 @@
                                         </div>
                                     </div>
                                     <p class="text-gray-700 mb-2">
-                                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2"></i>
+                                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
                                         <strong>Fermé le dimanche.</strong>
                                     </p>
                                 </div>
@@ -1468,7 +1525,7 @@
     </script>
 
     <!-- Contact Section - VERSION OPTIMISÉE AVEC LEAFLET -->
-    <section id="contact" class="py-16 bg-white scroll-mt-20" itemscope itemtype="https://schema.org/MedicalClinic"
+    <section id="contact" class="py-16 bg-white" itemscope itemtype="https://schema.org/MedicalClinic"
         aria-labelledby="contact-title">
 
         <div class="container mx-auto px-4">
@@ -1586,7 +1643,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-3 pt-3 border-t border-gray-200">
-                                    <p class="text-sm text-amber-700 flex items-center">
+                                    <p class="text-sm text-yellow-700 flex items-center">
                                         <i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
                                         Sur rendez-vous uniquement
                                     </p>
@@ -1642,17 +1699,17 @@
                             <!-- Contrôles de la carte -->
                             <div class="absolute bottom-4 right-4 z-20 flex flex-col gap-2">
                                 <button onclick="zoomIn()"
-                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
+                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110"
                                     aria-label="Zoomer">
                                     <i class="fas fa-plus"></i>
                                 </button>
                                 <button onclick="zoomOut()"
-                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
+                                    class="bg-white text-gray-800 w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110"
                                     aria-label="Dézoomer">
                                     <i class="fas fa-minus"></i>
                                 </button>
                                 <button onclick="locateUser()"
-                                    class="bg-blue-600 text-white w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all hover:scale-110"
+                                    class="bg-blue-600 text-white w-10 h-10 rounded-full shadow-lg hover:shadow-xl flex items-center justify-center transition-all transform hover:scale-110"
                                     aria-label="Me localiser">
                                     <i class="fas fa-location-arrow"></i>
                                 </button>
@@ -1679,7 +1736,7 @@
                                     <span>Accessible aux personnes à mobilité réduite (PMR)</span>
                                 </li>
                                 <li class="flex items-start">
-                                    <i class="fas fa-parking text-amber-600 mr-2 mt-1" aria-hidden="true"></i>
+                                    <i class="fas fa-parking text-yellow-600 mr-2 mt-1" aria-hidden="true"></i>
                                     <span>Parking gratuit devant le bâtiment</span>
                                 </li>
                             </ul>
@@ -1766,22 +1823,6 @@
                         img.src = img.dataset.src;
                     }
                     img.classList.add('loaded');
-                });
-            }
-
-            // 2. Optimisation des interactions hover sur mobile
-            function isTouchDevice() {
-                return ('ontouchstart' in window) ||
-                    (navigator.maxTouchPoints > 0) ||
-                    (navigator.msMaxTouchPoints > 0);
-            }
-
-            if (isTouchDevice()) {
-                // Désactiver les effets hover problématiques sur mobile
-                const serviceCards = document.querySelectorAll('#services > div > div > div');
-                serviceCards.forEach(card => {
-                    card.classList.remove('hover:scale-[1.02]', 'hover:shadow-xl');
-                    card.classList.add('active:scale-95');
                 });
             }
 
@@ -2107,7 +2148,7 @@
             if (placeholder) {
                 placeholder.innerHTML = `
             <div class="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-gray-100">
-                <i class="fas fa-exclamation-triangle text-amber-500 text-4xl mb-4"></i>
+                <i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>
                 <p class="text-gray-700 mb-2">Carte non disponible</p>
                 <a href="https://maps.google.com/?q=30.359826,-9.526296" 
                    target="_blank"
