@@ -1442,6 +1442,10 @@
                     if (otherIcon) {
                         otherIcon.style.transform = 'rotate(0deg)';
                     }
+                    const otherButton = item.closest('.faq-item').querySelector('.faq-question');
+                    if (otherButton) {
+                        otherButton.setAttribute('aria-expanded', 'false');
+                    }
                 }
             });
 
@@ -1819,20 +1823,6 @@
                 }
             });
         });
-
-        // 5. Optimisation pour le scrolling
-        let scrollTimeout;
-        window.addEventListener('scroll', function () {
-            clearTimeout(scrollTimeout);
-
-            // Pause le lazy loading pendant le scroll pour plus de fluidité
-
-            scrollTimeout = setTimeout(() => {
-                document.querySelectorAll('.lazy-image:not(.loaded)').forEach(img => {
-                    img.style.opacity = '0';
-                });
-            }, 100);
-        }, { passive: true });
     </script>
 
     <!-- NOSCRIPT fallback -->
@@ -1865,6 +1855,9 @@
 
         // Initialiser la carte Leaflet
         function initLeafletMap() {
+            // Garde : la carte ne doit être créée qu'une seule fois
+            if (leafletMap) return;
+
             console.log('🗺️ Initialisation de Leaflet...');
 
             // Masquer le placeholder
@@ -2106,13 +2099,6 @@
             if (mapContainer) {
                 observer.observe(mapContainer);
             }
-
-            // Fallback: charger après 2 secondes max
-            setTimeout(() => {
-                if (!leafletMap && mapContainer) {
-                    initLeafletMap();
-                }
-            }, 2000);
         });
 
         // Fallback si Leaflet ne charge pas
@@ -2393,7 +2379,6 @@
 
     <!-- Scripts optimisés -->
     <script src="assets/js/main.min.js" defer></script>
-    <script src="assets/js/gallery.min.js" defer></script>
     <script src="assets/js/gallery-optimized.js" defer></script>
     <script>
         // Analytics ou autres scripts non critiques
