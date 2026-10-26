@@ -1,0 +1,4 @@
+/* Source de assets/css/tailwind.css (Tailwind CSS 2.2.19) : voir tailwind.config.js */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
