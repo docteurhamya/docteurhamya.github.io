@@ -317,7 +317,7 @@
                 setTimeout(() => { placeholder.style.display = 'none'; }, 500);
             }
 
-            map = L.map('leaflet-map').setView([CABINET.lat, CABINET.lng], 17);
+            map = L.map('leaflet-map').setView([CABINET.lat, CABINET.lng], 18); // zoom 18 : le nom « Cabinet Dr HAMYA » s'affiche sur le fond OpenStreetMap
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
