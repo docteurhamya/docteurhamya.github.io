@@ -491,7 +491,59 @@ button:focus {
     outline: none;
 }
 
-/* 6. Sélecteur de langue (FR / AR) */
+/* 6. En-tête : nom du docteur toujours sur une seule ligne, sélecteur de langue (FR / AR) */
+/* Tailles calculées pour que logo + nom + bouton de langue + bouton menu tiennent dès 320 px.
+   Le menu horizontal n'apparaît qu'à partir de 1024 px (en dessous : bouton menu). */
+header .brand-icon {
+    font-size: 1.5rem;
+    margin-inline-end: 0.5rem;
+}
+
+.brand-name {
+    font-size: 1rem;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+#mobile-menu-button {
+    margin-inline-end: -0.5rem; /* zone de clic de 40 px conservée, icône alignée sur le bord */
+}
+
+@media (max-width: 359px) {
+    header .brand-icon {
+        display: none;
+    }
+
+    .brand-name {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (min-width: 390px) {
+    .brand-name {
+        font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 640px) {
+    header .brand-icon {
+        font-size: 1.875rem;
+        margin-inline-end: 0.75rem;
+    }
+
+    .brand-name {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand-name {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
 .lang-switch {
     margin-inline: 0.5rem;
     padding: 0.2rem 0.6rem;
@@ -510,8 +562,13 @@ button:focus {
 
 @media (min-width: 768px) {
     .lang-switch {
-        margin-inline: 2rem 0;
         padding: 0.25rem 0.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lang-switch {
+        margin-inline: 2rem 0;
     }
 }
 
