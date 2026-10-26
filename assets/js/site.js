@@ -11,11 +11,6 @@
        ---------------------------------------------------------------------- */
     const TEXTS = {
         fr: {
-            doctor: 'Dr. Bouchaib HAMYA',
-            office: 'Cabinet médical',
-            landmark: 'Inzegane (face Marjane)',
-            call: 'Appeler',
-            directions: 'Itinéraire',
             youAreHere: 'Vous êtes ici',
             distance: 'Distance au cabinet :',
             geoUnsupported: "La géolocalisation n'est pas supportée par votre navigateur.",
@@ -25,11 +20,6 @@
             km: 'km'
         },
         ar: {
-            doctor: "الدكتور بوشعيب حامية",
-            office: "عيادة طبية",
-            landmark: "إنزكان (قبالة مرجان)",
-            call: "اتصل",
-            directions: "التوجه للعيادة",
             youAreHere: "أنتم هنا",
             distance: "المسافة إلى العيادة:",
             km: "كلم",
@@ -44,11 +34,12 @@
     const RTL = document.documentElement.dir === 'rtl';
 
     /* ----------------------------------------------------------------------
-       Cabinet : téléphone et coordonnées (valeurs reprises telles quelles).
+       Cabinet : position unique (épingle de la fiche Google Maps), utilisée pour le
+       centre de la carte, l'itinéraire et la distance ; lien vers la fiche Google Maps.
+       La même position figure dans les balises geo et les données structurées des pages.
        ---------------------------------------------------------------------- */
-    const PHONE = '+212528872513';
-    const MAP_CENTER = [30.3595828, -9.5258805];                           // marqueur et centre de la carte
-    const DIRECTIONS_TARGET = { lat: 30.359826373778983, lng: -9.526295729030254 }; // destination de l'itinéraire
+    const CABINET = { lat: 30.359618, lng: -9.525894 };
+    const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/S8nEuBciGKWgReLq6';
 
     /* ======================================================================
        0. Années d'expérience calculées automatiquement
@@ -237,7 +228,7 @@
        ====================================================================== */
     function openDirections() {
         const url = 'https://www.google.com/maps/dir/?api=1&destination=' +
-            DIRECTIONS_TARGET.lat + ',' + DIRECTIONS_TARGET.lng + '&travelmode=driving';
+            CABINET.lat + ',' + CABINET.lng + '&travelmode=driving';
         window.open(url, '_blank', 'noopener,noreferrer');
     }
 
@@ -251,13 +242,41 @@
         return (R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))).toFixed(1);
     }
 
-    // Leaflet (≈ 150 Ko) n'est téléchargé que lorsque la carte approche de l'écran
+    // Leaflet (≈ 150 Ko : script + feuille de style) n'est téléchargé que lorsque la carte approche de l'écran
+    const LEAFLET_CSS = {
+        href: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
+        integrity: 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
+    };
     const LEAFLET_JS = {
         src: 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
         integrity: 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='
     };
 
+    // Feuille de style insérée avant site.css, pour que les réglages de site.css gardent la priorité
+    function loadLeafletCss() {
+        return new Promise((resolve, reject) => {
+            if (document.querySelector('link[data-leaflet-css]')) {
+                resolve();
+                return;
+            }
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = LEAFLET_CSS.href;
+            link.integrity = LEAFLET_CSS.integrity;
+            link.crossOrigin = 'anonymous';
+            link.setAttribute('data-leaflet-css', '');
+            link.onload = () => resolve();
+            link.onerror = () => reject(new Error('Leaflet indisponible'));
+            const siteCss = document.querySelector('link[rel="stylesheet"][href$="site.css"]');
+            document.head.insertBefore(link, siteCss);
+        });
+    }
+
     function loadLeaflet() {
+        return Promise.all([loadLeafletCss(), loadLeafletJs()]);
+    }
+
+    function loadLeafletJs() {
         return new Promise((resolve, reject) => {
             if (typeof window.L !== 'undefined') {
                 resolve();
@@ -285,7 +304,7 @@
                 '<div class="h-full w-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-gray-100">' +
                 '<i class="fas fa-exclamation-triangle text-yellow-500 text-4xl mb-4"></i>' +
                 '<p class="text-gray-700 mb-2">' + T.mapUnavailable + '</p>' +
-                '<a href="https://maps.google.com/?q=30.359826,-9.526296" target="_blank" rel="noopener noreferrer"' +
+                '<a href="' + GOOGLE_MAPS_URL + '" target="_blank" rel="noopener noreferrer"' +
                 ' class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">' +
                 '<i class="fab fa-google mr-2"></i>' + T.openGoogleMaps + '</a></div>';
         }
@@ -298,7 +317,7 @@
                 setTimeout(() => { placeholder.style.display = 'none'; }, 500);
             }
 
-            map = L.map('leaflet-map').setView(MAP_CENTER, 17);
+            map = L.map('leaflet-map').setView([CABINET.lat, CABINET.lng], 17);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
@@ -306,33 +325,7 @@
                 className: 'leaflet-tile'
             }).addTo(map);
 
-            const pinIcon = L.divIcon({
-                html: '<div class="map-pin"><div class="map-pin-shape"></div>' +
-                    '<div class="map-pin-center"><i class="fas fa-plus"></i></div></div>',
-                iconSize: [1, 1],
-                iconAnchor: [0.5, 1],
-                className: 'leaflet-marker-custom-fixed'
-            });
-
-            const popup =
-                '<div class="map-popup" dir="' + (RTL ? 'rtl' : 'ltr') + '">' +
-                '<h3>' + T.doctor + '</h3>' +
-                '<p class="map-popup-office"><i class="fas fa-map-marker-alt"></i>' + T.office + '</p>' +
-                '<p class="map-popup-landmark">' + T.landmark + '</p>' +
-                '<div class="map-popup-actions">' +
-                '<a href="tel:' + PHONE + '" class="map-popup-call"><i class="fas fa-phone"></i>' + T.call + '</a>' +
-                '<button type="button" class="map-popup-directions" data-action="directions">' +
-                '<i class="fas fa-directions"></i>' + T.directions + '</button>' +
-                '</div></div>';
-
-            L.marker(MAP_CENTER, { icon: pinIcon, title: T.doctor }).addTo(map).bindPopup(popup).openPopup();
-
-            L.circle(MAP_CENTER, {
-                color: '#1e40af',
-                fillColor: '#3b82f6',
-                fillOpacity: 0.1,
-                radius: 50
-            }).addTo(map);
+            // Pas de marqueur : le fond OpenStreetMap indique déjà le cabinet à cet endroit.
 
             setTimeout(() => map.invalidateSize(), 100);
         }
@@ -359,7 +352,7 @@
 
                 map.setView([lat, lng], 15);
 
-                const line = L.polyline([[lat, lng], [DIRECTIONS_TARGET.lat, DIRECTIONS_TARGET.lng]], {
+                const line = L.polyline([[lat, lng], [CABINET.lat, CABINET.lng]], {
                     color: '#3b82f6',
                     weight: 3,
                     opacity: 0.7,
@@ -367,7 +360,7 @@
                 }).addTo(map);
                 setTimeout(() => map.removeLayer(line), 10000);
 
-                const km = distanceKm(lat, lng, DIRECTIONS_TARGET.lat, DIRECTIONS_TARGET.lng);
+                const km = distanceKm(lat, lng, CABINET.lat, CABINET.lng);
                 userMarker.bindPopup('<div class="map-popup map-popup-small" dir="' + (RTL ? 'rtl' : 'ltr') + '"><strong>' + T.youAreHere +
                     '</strong><br>' + T.distance + ' ' + km + ' ' + T.km + '</div>').openPopup();
             }, () => {

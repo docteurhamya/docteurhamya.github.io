@@ -27,9 +27,9 @@
 
     <!-- Géolocalisation pour le référencement local -->
     <meta name="geo.region" content="MA-INE">
-    <meta name="geo.placename" content="Inzegane">
-    <meta name="geo.position" content="30.3558;-9.5376">
-    <meta name="ICBM" content="30.3558, -9.5376">
+    <meta name="geo.placename" content="Inezgane">
+    <meta name="geo.position" content="30.359618;-9.525894">
+    <meta name="ICBM" content="30.359618, -9.525894">
 
     <title>الدكتور بوشعيب حامية – طبيب عام وفحص بالصدى في إنزكان، قرب أكادير</title>
     <link rel="canonical" href="https://docteurhamya.github.io/ar/">
@@ -38,7 +38,6 @@
     <link rel="alternate" hreflang="x-default" href="https://docteurhamya.github.io/">
 
     <!-- Connexions anticipées vers les serveurs externes -->
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Police arabe (Noto Sans Arabic) -->
@@ -50,8 +49,6 @@
 
     <!-- Feuilles de style -->
     <link rel="stylesheet" href="/assets/css/tailwind.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/site.css">
     <!-- Icônes : sous-ensemble local de Font Awesome (généré par tools/build-icons.py) -->
     <link rel="stylesheet" href="/assets/css/icons.css">
@@ -77,11 +74,14 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Physician",
+          "@type": "IndividualPhysician",
           "@id": "https://docteurhamya.github.io/#dr-bouchaib-hamya",
           "name": "الدكتور بوشعيب حامية",
           "description": "طبيب عام منذ سنة 1987، متكوّن في الفحص بالصدى. عيادة طبية في إنزكان، قرب أكادير، بعد سنوات من الممارسة في كلميم.",
           "url": "https://docteurhamya.github.io/ar/",
+          "practicesAt": {
+            "@id": "https://docteurhamya.github.io/#cabinet-medical"
+          },
           "telephone": "+212528872513",
           "medicalSpecialty": "https://schema.org/PrimaryCare",
           "image": {
@@ -91,22 +91,6 @@
             "height": 1067,
             "caption": "مكتب الدكتور بوشعيب حامية – عيادة طبية في إنزكان"
           },
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "إنزكان",
-            "addressRegion": "سوس ماسة",
-            "addressCountry": "MA",
-            "streetAddress": "تجزئة النجاح، البقعة رقم 16، عمارة الإدريسي، الشقة 6، الطابق الثاني"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "30.3558",
-            "longitude": "-9.5376"
-          },
-          "openingHours": [
-            "Mo-Fr 09:00-19:00",
-            "Sa 09:00-13:00"
-          ],
           "knowsLanguage": [
             {
               "@type": "Language",
@@ -182,16 +166,55 @@
           },
           "geo": {
             "@type": "GeoCoordinates",
-            "latitude": "30.359826",
-            "longitude": "-9.526296"
+            "latitude": "30.359618",
+            "longitude": "-9.525894"
           },
-          "openingHours": [
-            "Mo-Fr 09:00-19:00",
-            "Sa 09:00-13:00"
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "إنزكان"
+            },
+            {
+              "@type": "City",
+              "name": "آيت ملول"
+            },
+            {
+              "@type": "City",
+              "name": "الدشيرة الجهادية"
+            },
+            {
+              "@type": "City",
+              "name": "أكادير"
+            }
           ],
-          "hasMap": "https://www.google.com/maps?q=30.359826,-9.526296",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "09:00",
+              "closes": "19:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "09:00",
+              "closes": "13:00"
+            }
+          ],
+          "hasMap": "https://maps.app.goo.gl/S8nEuBciGKWgReLq6",
           "image": "https://docteurhamya.github.io/assets/images/bureau-docteur-800.webp",
-          "medicalSpecialty": "https://schema.org/PrimaryCare"
+          "medicalSpecialty": "https://schema.org/PrimaryCare",
+          "sameAs": [
+            "https://maps.app.goo.gl/S8nEuBciGKWgReLq6",
+            "https://www.telecontact.ma/annonceur/hamya-bouchaib/3237414/inezgane.php",
+            "https://www.med.ma/doctor/general-practitioner/agadir/dr-bouchaib-hamya-230355"
+          ]
         }
       ]
     }
@@ -245,13 +268,14 @@
         aria-labelledby="hero-title">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 id="hero-title" class="text-4xl md:text-5xl font-bold mb-4">الدكتور بوشعيب حامية</h1>
-                <h2 class="text-2xl md:text-3xl font-semibold mb-6">الطب العام والفحص بالصدى</h2>
-                <p class="text-lg mb-8">طبيب منذ أكثر من <span data-years-since="1987">39</span> سنة، مارس سابقاً في كلميم، ويستقبل مرضاه اليوم في إنزكان.</p>
+                <h1 id="hero-title" class="mb-6">
+                    <span class="block text-4xl md:text-5xl font-bold mb-4">الدكتور بوشعيب حامية</span>
+                    <span class="block text-2xl md:text-3xl font-semibold">طبيب عام في إنزكان</span>
+                </h1>
+                <p class="text-lg mb-8">طبيب منذ أكثر من <span data-years-since="1987">39</span> سنة، متكوّن في الفحص بالصدى، مارس سابقاً في كلميم، ويستقبل مرضاه اليوم في إنزكان.</p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <a href="tel:+212528872513"
-                        class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-6 rounded-lg text-center transition appointment-btn"
-                        aria-label="الاتصال بالعيادة">
+                        class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-3 px-6 rounded-lg text-center transition appointment-btn">
                         <i class="fas fa-phone mr-2" aria-hidden="true"></i> اتصل على <span dir="ltr">05 28 87 25 13</span>
                     </a>
                 </div>
@@ -259,8 +283,10 @@
             <div class="md:w-1/2 flex justify-center">
                 <div
                     class="relative w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden border-4 border-white shadow-xl floating">
-                    <img src="/assets/images/doctor.webp" alt="الدكتور بوشعيب حامية، طبيب عام في إنزكان"
-                        width="400" height="400" loading="eager" fetchpriority="high" class="w-full h-full object-cover">
+                    <img src="/assets/images/doctor-640.webp"
+                        srcset="/assets/images/doctor-320.webp 320w, /assets/images/doctor-640.webp 640w, /assets/images/doctor.webp 1017w"
+                        sizes="(min-width: 768px) 320px, 256px" alt="الدكتور بوشعيب حامية، طبيب عام في إنزكان"
+                        width="320" height="320" loading="eager" fetchpriority="high" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -371,7 +397,7 @@
                         </div>
 
                         <p class="text-gray-700 mb-4">
-                            فحوصات بالصدى تُجرى في العيادة، مع تسليم تقرير في نهاية الفحص.
+                            فحوصات بالصدى (الإيكوغرافيا) تُجرى في العيادة، مع تسليم تقرير في نهاية الفحص.
                         </p>
 
                         <ul class="text-gray-600 text-sm space-y-2">
@@ -681,7 +707,7 @@
                         <p class="text-gray-700">
                             طبيب عام منذ <strong class="font-semibold text-blue-800">أكثر من <span data-years-since="1987">39</span> سنة</strong>، مارس
                             الدكتور بوشعيب حامية الطب لسنوات طويلة في كلميم قبل أن يفتح عيادته في
-                            <strong>إنزكان</strong>، قبالة مرجان.
+                            <strong>إنزكان</strong>، قبالة مرجان، على بعد حوالي عشرة كيلومترات من أكادير.
                         </p>
 
                         <p class="text-gray-700">
@@ -750,8 +776,7 @@
                                 </p>
                                 <div class="flex flex-wrap gap-2 mt-3">
                                     <a href="tel:+212528872513"
-                                        class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm font-medium"
-                                        aria-label="الاتصال بعيادة الدكتور حامية">
+                                        class="inline-flex items-center px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition text-sm font-medium">
                                         <i class="fas fa-phone mr-2" aria-hidden="true"></i>
                                         <span dir="ltr">05&nbsp;28&nbsp;87&nbsp;25&nbsp;13</span>
                                     </a>
@@ -896,7 +921,7 @@
                                         </li>
                                         <li class="flex items-start">
                                             <i class="fas fa-home text-green-500 mt-1 mr-2" aria-hidden="true"></i>
-                                            <span>سكان إنزكان والجماعات المجاورة</span>
+                                            <span>سكان إنزكان وآيت ملول والدشيرة الجهادية وأكادير والجماعات المجاورة</span>
                                         </li>
                                         <li class="flex items-start">
                                             <i class="fas fa-file-medical text-purple-500 mt-1 mr-2" aria-hidden="true"></i>
@@ -1115,7 +1140,7 @@
           "name": "هل تستقبلون مرضى جدداً؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، تستقبل العيادة المرضى الجدد. المرضى الكبار والأطفال، سكان إنزكان والجماعات المجاورة، المرضى المحالون من أطباء آخرين، مريض جديد؟ لا تنسَ إحضار وثائقك الطبية السابقة في الموعد الأول."
+            "text": "نعم، تستقبل العيادة المرضى الجدد. المرضى الكبار والأطفال، سكان إنزكان وآيت ملول والدشيرة الجهادية وأكادير والجماعات المجاورة، المرضى المحالون من أطباء آخرين، مريض جديد؟ لا تنسَ إحضار وثائقك الطبية السابقة في الموعد الأول."
           }
         },
         {
@@ -1201,7 +1226,7 @@
                                 <div class="text-gray-600 space-y-1">
                                     <p>تجزئة النجاح، البقعة رقم 16</p>
                                     <p>عمارة الإدريسي</p>
-                                    <p>الشقة 6 – الطابق الثاني <span class="text-green-600 font-medium">(يوجد مصعد)</span></p>
+                                    <p>الشقة 6 – الطابق الثاني <span class="text-green-700 font-medium">(يوجد مصعد)</span></p>
                                     <p>
                                         <span>إنزكان</span>
                                         <span class="text-blue-600 font-medium">(قبالة مرجان)</span>
@@ -1226,8 +1251,7 @@
                             <div>
                                 <h4 class="font-bold text-gray-800 mb-2">الهاتف</h4>
                                 <a href="tel:+212528872513"
-                                    class="text-gray-800 hover:text-blue-700 text-lg font-semibold transition-colors"
-                                    aria-label="الاتصال بعيادة الدكتور حامية">
+                                    class="text-gray-800 hover:text-blue-700 text-lg font-semibold transition-colors">
                                     <i class="fas fa-phone-volume mr-2 text-green-600" aria-hidden="true"></i>
                                     <span dir="ltr">+212&nbsp;5&nbsp;28&nbsp;87&nbsp;25&nbsp;13</span>
                                 </a>
@@ -1244,8 +1268,7 @@
                             <div>
                                 <h4 class="font-bold text-gray-800 mb-2">البريد الإلكتروني</h4>
                                 <a href="mailto:docteurhamya@gmail.com"
-                                    class="text-gray-800 hover:text-blue-700 font-medium transition-colors break-all"
-                                    aria-label="إرسال بريد إلكتروني إلى الدكتور حامية">
+                                    class="text-gray-800 hover:text-blue-700 font-medium transition-colors break-all">
                                     <i class="fas fa-paper-plane mr-2 text-blue-500" aria-hidden="true"></i>
                                     docteurhamya@gmail.com
                                 </a>
@@ -1287,7 +1310,7 @@
                         <!-- Boutons d'action -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                             <a href="tel:+212528872513"
-                                class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                                class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-lg text-center transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
                                 aria-label="اتصل الآن لحجز موعد">
                                 <i class="fas fa-phone mr-2" aria-hidden="true"></i>
                                 اتصل الآن
@@ -1325,7 +1348,7 @@
                             <!-- La carte Leaflet sera injectée ici -->
                             <div id="leaflet-map" class="h-full w-full"></div>
                             <noscript>
-                                <a href="https://www.openstreetmap.org/?mlat=30.359826&amp;mlon=-9.526296#map=17/30.359826/-9.526296" target="_blank" rel="noopener noreferrer"
+                                <a href="https://www.openstreetmap.org/?mlat=30.359618&amp;mlon=-9.525894#map=17/30.359618/-9.525894" target="_blank" rel="noopener noreferrer"
                                     class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-blue-50 to-gray-100">
                                     <i class="fas fa-external-link-alt text-blue-400 text-5xl mb-4" aria-hidden="true"></i>
                                     <span class="text-xl font-bold text-gray-800 mb-2">عيادة الدكتور حامية</span>

@@ -357,45 +357,6 @@ button:focus {
     outline-offset: 2px;
 }
 
-/* Marqueur du cabinet */
-.map-pin {
-    width: 0;
-    height: 0;
-    position: relative;
-}
-
-.map-pin-shape {
-    width: 40px;
-    height: 40px;
-    background: #1e40af;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: -40px;
-    left: -20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.map-pin-center {
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    border-radius: 50%;
-    position: absolute;
-    top: -35px;
-    left: -15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: #1e40af;
-    font-weight: bold;
-}
-
-.map-pin-center i {
-    transform: rotate(45deg);
-}
-
 /* Position du visiteur */
 .map-user-dot {
     background: #10b981;
@@ -415,57 +376,6 @@ button:focus {
 
 .map-popup.map-popup-small {
     padding: 5px;
-}
-
-.map-popup h3 {
-    margin: 0 0 8px 0;
-    color: #1e40af;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-.map-popup .map-popup-office {
-    margin: 0 0 5px 0;
-    color: #4b5563;
-    font-size: 14px;
-}
-
-.map-popup .map-popup-landmark {
-    margin: 0 0 10px 0;
-    color: #6b7280;
-    font-size: 13px;
-}
-
-.map-popup i {
-    margin-inline-end: 5px;
-}
-
-.map-popup-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.map-popup .map-popup-call,
-.map-popup .map-popup-directions {
-    flex: 1;
-    padding: 6px 10px;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 13px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.map-popup .map-popup-call {
-    padding: 6px 12px;
-    background: #10b981;
-}
-
-.map-popup .map-popup-directions {
-    background: #3b82f6;
 }
 
 /* 5. Accessibilité */
