@@ -14,6 +14,7 @@
 .fa-comments::before{content:"\f086"}
 .fa-gavel::before{content:"\f0e3"}
 .fa-exclamation-circle::before{content:"\f06a"}
+.fa-share-alt::before{content:"\f1e0"}
 .fa-users::before{content:"\f0c0"}
 .fa-location-arrow::before{content:"\f124"}
 .fa-procedures::before{content:"\f487"}
@@ -59,3 +60,5 @@
 .fa-paper-plane::before{content:"\f1d8"}
 .fa-graduation-cap::before{content:"\f19d"}
 .fa-google::before{content:"\f1a0"}
+.fa-facebook-f::before{content:"\f39e"}
+.fa-instagram::before{content:"\f16d"}
